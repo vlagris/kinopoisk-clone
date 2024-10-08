@@ -1,6 +1,5 @@
 import {clsx} from "clsx";
 import {MoviePoster} from "@/pages/Movie/components/MoviePoster";
-import {Trailer} from "@/pages/Movie/components/Trailer";
 import MovieRating from "../MovieRating/MovieRating.tsx";
 import {AboutMovieDesktop} from "../AboutMovie";
 import {MovieHeaderProps} from "@/pages/Movie/components/MovieHeader/MovieHeader.tsx";
@@ -26,7 +25,6 @@ function MovieHeaderDesktop({movie, isSuccess}: MovieHeaderProps) {
             <div className={classes.posterContainer}>
               <MoviePoster poster={movie?.poster}/>
             </div>
-            <Trailer/>
           </div>
 
 
