@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createHashRouter } from "react-router-dom";
 import {PATH_ROUTE} from "@/constants";
 import {Layout} from "@/components/Layout";
 import {Home} from "@/pages/Home";
@@ -9,7 +9,7 @@ import {Movie} from "@/pages/Movie";
 
 
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
   {
     path: PATH_ROUTE.HOME,
     element: <Layout/>,
