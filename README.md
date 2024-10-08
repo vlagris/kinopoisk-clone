@@ -1,4 +1,4 @@
-## GreenBook
+## Kinopoisk
 
 <p>
     <img alt="NPM Badge" src="https://img.shields.io/badge/v10.2.3-green?label=npm&color=blue">
@@ -47,7 +47,7 @@ Frontend:
 #### Клонирование репозитория
 ```
 git clone https://github.com/vlagris/kinopoisk-app.git
-cd greenbook-web-store
+cd kinopoisk-app
 ```
 
 #### Установка
