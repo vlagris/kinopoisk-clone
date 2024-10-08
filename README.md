@@ -33,15 +33,7 @@ Frontend:
 
 ## Особенности
 
-**Система аутентификации:** надежная система аутентификации, сделанная при помощи JWT.
-
-**Страница настройки профиля:** страница настройки профиля пользователя, предоставляющая возможность редактировать данные пользователя.
-
-**Страница каталога:** страница  каталога книг, отображающая список книг с возможностью переключения между жанрами, сортировки и фильтрации по цене и авторам.
-
-**Функция «В корзину»:** дает пользователям возможность добавить книгу в свою корзину, независимо от того, авторизован пользователь или нет.
-
-**Страница корзины:** страница корзины отображает список книг, которые добавил пользователь, а также предоставляет возможность редактировать количество и удалять.
+**аааа:** ааааа.
 
 
 
@@ -54,7 +46,7 @@ Frontend:
 
 #### Клонирование репозитория
 ```
-git clone https://github.com/vlagris/greenbook-web-store.git
+git clone https://github.com/vlagris/kinopoisk-app.git
 cd greenbook-web-store
 ```
 
@@ -74,26 +66,24 @@ npm run dev
 
 ## Ссылки:
 
-Проект запущен на [github pages](https://vlagris.github.io/greenbook-web-store/)
+Проект запущен на [github pages](https://vlagris.github.io/kinopoisk-app/)
 
 
 
 ## Скриншоты:
 <div align="center"> 
-  <img alt="Home page" src="https://github.com/vlagris/greenbook-web-store/blob/main/screenshots/home.png">
+  <img alt="Home page" src="https://github.com/vlagris/kinopoisk-app/blob/main/screenshots/home-page.jpg">
   <p><i>Главная страница</i></p>
-  <img alt="Registration page" src="https://github.com/vlagris/greenbook-web-store/blob/main/screenshots/registration.png">
-  <p><i>Страница регистрации</i></p>
-  <img alt="Login page" src="https://github.com/vlagris/greenbook-web-store/blob/main/screenshots/login.png">
-  <p><i>Страница авторизации</i></p>
-<img alt="Account settings page" src="https://github.com/vlagris/greenbook-web-store/blob/main/screenshots/account-settings.png">
+  <img alt="List collections page" src="https://github.com/vlagris/kinopoisk-app/blob/main/screenshots/list-collections.jpg">
+  <p><i>Страница списков</i></p>
+  <img alt="List movies page" src="https://github.com/vlagris/kinopoisk-app/blob/main/screenshots/list-movies.jpg">
+  <p><i>Страница списка фильмов</i></p>
+<img alt="Account settings page" src="https://github.com/vlagris/kinopoisk-app/blob/main/screenshots/account-settings.png">
   <p><i>Страница настроек аккаунта</i></p>
-  <img alt="Catalog page" src="https://github.com/vlagris/greenbook-web-store/blob/main/screenshots/catalog.png">
-  <p><i>Страница каталога</i></p>
-  <img alt="Cart page" src="https://github.com/vlagris/greenbook-web-store/blob/main/screenshots/cart.png">
-  <p><i>Страница карзины</i></p>
-  <img alt="Empty cart page" src="https://github.com/vlagris/greenbook-web-store/blob/main/screenshots/empty-cart.png">
-  <p><i>Страница карзины (пустая)</i></p>
+  <img alt="Movie page" src="https://github.com/vlagris/kinopoisk-app/blob/main/screenshots/movie-page.jpg">
+  <p><i>Страница фильма</i></p>
+  <img alt="Search" src="https://github.com/vlagris/kinopoisk-app/blob/main/screenshots/search.jpg">
+  <p><i>Поиск фильмов</i></p>
 </div>
 
 
