@@ -6,6 +6,7 @@ import * as path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "/kinopoisk-app/",
   plugins: [react(), svgr()],
   resolve: {
     alias: {
