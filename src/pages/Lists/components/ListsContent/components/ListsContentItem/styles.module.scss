@@ -1,0 +1,42 @@
+.item {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding: 16px;
+  text-decoration: none;
+  border-radius: 16px;
+  transition-timing-function: ease-out;
+  transition-duration: .1s;
+  transition-property: background-color;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  max-width: calc(100% - 280px);
+  margin-left: 24px;
+}
+
+.preview {
+  width: 88px;
+  height: 88px;
+}
+
+.cover {
+  width: 100%;
+  height: 100%;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--gray-900);
+}
+
+.filmCount {
+  margin-top: 6px;
+  font-size: 15px;
+  line-height: 18px;
+  color: var(--gray-600);
+}

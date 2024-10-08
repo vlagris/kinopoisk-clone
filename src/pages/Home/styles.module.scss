@@ -1,0 +1,43 @@
+.home {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.column {
+  min-width: 0;
+}
+
+.columnContent {
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.columnSidebar {
+  display: none;
+  padding-right: 10px;
+
+
+  @include min-2lg {
+    display: block;
+  }
+}
+
+.sidebarContainer {
+  width: 240px;
+  height: 100%;
+  padding: 0 16px 0 40px;
+  border-right: 1px solid var(--gray-100);
+}
+
+.sidebarSticky {
+  position: sticky;
+  top: var(--header-height);
+  z-index: 1;
+  padding: 27px 0 25px;
+}
+
+
+.section {
+  margin-top: 30px;
+  padding: 0 50px 0 40px;
+}

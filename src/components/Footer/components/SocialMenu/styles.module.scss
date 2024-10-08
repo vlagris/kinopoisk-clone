@@ -1,0 +1,28 @@
+.socialMenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 44px 20px 20px;
+  gap: 24px;
+}
+
+.socialMenuItem {
+  display: block;
+  width: 24px;
+  height: 24px;
+  font-size: 0;
+  opacity: .4;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 24px;
+
+  &:hover {
+    opacity: .7;
+  }
+}
+
+
+.socialMenuSmall {
+  padding: 20px 0 32px;
+  gap: 32px;
+}

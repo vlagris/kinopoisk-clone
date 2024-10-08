@@ -1,0 +1,26 @@
+.suggest {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  width: 100%;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 10px 20px -2px rgba(0, 0, 0, .4);
+}
+
+.suggestSmall {
+  position: initial;
+  border-radius: 0;
+}
+
+.empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 102px;
+  padding: 0 48px;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  opacity: .6;
+}

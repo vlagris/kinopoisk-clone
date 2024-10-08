@@ -1,0 +1,55 @@
+.listMovies {
+  display: grid;
+  grid-template-areas:
+        ". header header header ."
+        ". . . . ."
+        ". sidebar . content .";
+  grid-template-columns: auto 220px 40px 700px auto;
+  grid-template-rows: auto 48px auto;
+  padding-bottom: 60px;
+  border-top: 1px solid var(--gray-100);
+
+  @include min-2lg {
+    grid-template-columns: auto 260px 40px 900px auto;
+  }
+}
+
+
+.sidebar {
+  position: relative;
+  grid-area: sidebar;
+}
+
+
+.sidebarFilters {
+  position: sticky;
+  top: var(--header-height);
+  padding: 20px 0;
+}
+
+
+
+.content {
+  grid-area: content;
+}
+
+
+.listHeader {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  padding: 0 20px 0 16px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 40px;
+}
+
+
+
+

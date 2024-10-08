@@ -1,0 +1,25 @@
+.poster {
+  position: relative;
+}
+
+
+.image {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  min-width: 100%;
+  min-height: 320px;
+  object-fit: cover;
+
+  @include min-2lg {
+    min-height: 430px;
+  }
+}
+
+.imageSmall {
+  display: block;
+  overflow: hidden;
+  width: 220px;
+  height: 330px;
+  object-fit: cover;
+}

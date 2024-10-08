@@ -1,0 +1,92 @@
+.header {
+  padding: 40px 0 60px;
+  border-bottom: 1px solid var(--gray-50);
+}
+
+
+.container {
+  display: grid;
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  gap: 30px;
+  grid-template-columns: 240px 680px;
+
+  @include min-2lg {
+    max-width: 1200px;
+    grid-template-columns: 320px 840px;
+  }
+}
+
+
+.top {
+  margin-bottom: 48px;
+}
+
+
+.title {
+  margin-bottom: 12px;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 48px;
+  letter-spacing: -.5px;
+  color: var(--black);
+}
+
+.subtitle {
+  display: flex;
+  color: rgba(var(--black-rgb), .6);
+}
+
+.subtitleText {
+  margin-right: 8px;
+  font-size: 18px;
+  line-height: 20px;
+  letter-spacing: .2px;
+}
+
+
+
+.row {
+  display: grid;
+  grid-template-columns: 440px 240px;
+
+  @include min-2lg {
+    grid-template-columns: 600px 240px;
+  }
+}
+
+
+.column {
+  min-width: 100%;
+  padding: 0 9px;
+}
+
+
+.ratingContainer {
+  padding-left: 20px;
+}
+
+
+.crewContainer {
+  margin-top: 20px;
+  padding-left: 20px;
+}
+
+
+.posterContainer {
+  margin-bottom: 20px;
+
+  @include min-lg {
+    margin-bottom: 24px;
+  }
+}
+
+
+.trailerContainer {
+  margin-bottom: 20px;
+
+  @include min-lg {
+    margin-bottom: 24px;
+  }
+}

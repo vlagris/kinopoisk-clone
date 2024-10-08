@@ -1,0 +1,101 @@
+.card {
+  width: 150px;
+}
+
+.card_small {
+  width: 128px;
+
+  .poster {
+    height: 192px;
+    min-height: 192px;
+  }
+  .title {
+    font-size: 13px;
+  }
+}
+
+.link {
+  &:hover {
+    .posterOverlay {
+      background-color: rgba(var(--black-rgb), .15);
+    }
+    .title {
+      color: var(--primary);
+    }
+  }
+}
+
+.posterWrapper {
+  position: relative;
+
+}
+
+.poster {
+  overflow: hidden;
+  width: 100%;
+  height: 225px;
+  min-height: 225px;
+  white-space: nowrap;
+  text-indent: 100%;
+  object-fit: cover;
+}
+
+.posterOverlay {
+  position: absolute;
+  inset: 0;
+  display: block;
+  pointer-events: none;
+  transition: background-color .15s ease-in-out;
+}
+
+.rating {
+  position: absolute;
+  z-index: 1;
+  top: 6px;
+  left: 6px;
+  min-width: 32px;
+  padding: 0 5px;
+  background-color: var(--gray-600);
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--white);
+}
+
+.ratingValue {
+
+}
+
+.rating_green {
+  background-color: var(--green);
+}
+
+.info {
+  margin-top: 8px;
+}
+
+.title {
+  margin-bottom: 4px;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 18px;
+  color: var(--black);
+  transition: color .15s ease-in-out;
+}
+
+.subtitle {
+  display: block;
+  overflow: hidden;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: rgba(var(--black-rgb), .6);
+}

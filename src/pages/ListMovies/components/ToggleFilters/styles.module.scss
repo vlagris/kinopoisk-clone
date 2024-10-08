@@ -1,0 +1,47 @@
+.toggleFilters {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+
+  .item {
+    margin-bottom: 8px;
+  }
+}
+
+.item {
+  display: flex;
+  max-height: 40px;
+  padding: 11px 16px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 16px;
+  white-space: nowrap;
+  color: var(--black);
+  border-radius: 8px;
+  background: #f2f2f2;
+  transition: background-color .2s ease;
+
+  &:hover {
+    background: #e6e6e6;
+  }
+
+  &:not(:last-child) {
+    margin-right: 8px;
+  }
+}
+
+.item_disabled {
+  cursor: default;
+  pointer-events: none;
+  color: rgba(var(--black-rgb), .2);
+  background-color: #f2f2f2;
+}
+
+.item_active {
+  color: var(--white);
+  background: var(--gray-900);
+
+  &:hover {
+    background: var(--gray-900);
+  }
+}

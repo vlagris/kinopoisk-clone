@@ -1,0 +1,17 @@
+.movieSectionTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 16px 16px 12px;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+  color: var(--black);
+}
+
+.link {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--primary);
+}

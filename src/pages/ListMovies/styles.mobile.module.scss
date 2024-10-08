@@ -1,0 +1,36 @@
+.listMovies {
+  position: relative;
+}
+
+.topBar {
+  margin-bottom: 20px;
+}
+
+.topBarList {
+  overflow-x: scroll;
+  scrollbar-width: none;
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 16px;
+}
+
+
+.topBarItemWrap {
+  margin-right: 8px;
+}
+
+.listHeader {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 0 20px 0 16px;
+  overflow-x: scroll;
+  scrollbar-width: none;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 40px 0 60px;
+}

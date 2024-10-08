@@ -1,0 +1,69 @@
+
+
+
+.starItem {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+
+  &:not(:last-child) {
+    padding-right: 3px;
+  }
+
+  &:not(:first-child) {
+    padding-left: 3px;
+  }
+}
+
+.iconContainer {
+  display: block;
+  position: relative;
+}
+
+.icon {
+  display: block;
+  height: 32px;
+  width: 32px;
+}
+
+.iconDefault {
+  fill: var(--gray-200);
+}
+
+.iconActive {
+  fill: var(--primary);
+}
+
+.iconHover {
+  fill: var(--black);
+}
+
+.iconCroppedWrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+
+
+
+
+.text {
+  margin-block-start: 4px;
+  font-size: 13px;
+  color: rgba(var(--black-rgb), .2);
+}
+
+.textActive {
+  margin-block-start: 4px;
+  font-size: 13px;
+  color: var(--gray-400);
+}
+
+.textHover {
+  margin-block-start: 4px;
+  font-size: 13px;
+  color: rgba(var(--black-rgb));
+}

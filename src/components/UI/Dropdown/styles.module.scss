@@ -1,0 +1,41 @@
+.dropdown {
+  position: relative;
+}
+
+
+.menu {
+  margin: 16px 0;
+  position: absolute;
+  visibility: hidden;
+}
+
+
+.menu_show {
+  visibility: visible;
+}
+
+
+.menuList {
+  padding: 12px 0;
+  min-width: 200px;
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .06), 0 4px 10px rgba(0, 0, 0, .06);
+  overflow: hidden;
+}
+
+
+.item {
+  display: block;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f2f2f2;
+  }
+}
+
+
+.item_active {
+  background: var(--green-gray-50);
+  color: var(--gray-700);
+}

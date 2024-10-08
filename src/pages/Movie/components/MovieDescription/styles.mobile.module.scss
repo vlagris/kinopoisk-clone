@@ -1,0 +1,39 @@
+.description {
+
+}
+
+
+.shortDescription {
+  margin-bottom: 16px;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 400;
+  white-space: pre-wrap;
+  color: var(--black);
+}
+
+.paragraph {
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 400;
+  letter-spacing: .35px;
+  color: var(--black);
+}
+
+.paragraphTruncated {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  height: 60px;
+}
+
+.button {
+  margin-top: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 18px;
+  color: var(--primary);
+  outline: none;
+}

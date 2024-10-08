@@ -1,0 +1,20 @@
+.suggestGroup {
+  padding: 16px 0 10px;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid rgba(var(--black-rgb), .05);
+  }
+}
+
+.title {
+  display: block;
+  padding: 2px 16px 6px 16px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
+  color: rgba(var(--black-rgb), .6);
+}
+
+.list {
+
+}

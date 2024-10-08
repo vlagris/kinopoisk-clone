@@ -1,0 +1,10 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--black);
+}
+
+.footerSmall {
+  padding: 20px 0 62px;
+}

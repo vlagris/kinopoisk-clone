@@ -1,0 +1,61 @@
+
+.posterContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 24px;
+}
+
+.content {
+  padding: 24px 16px 32px;
+}
+
+.mainInfo {
+  max-width: 418px;
+  margin: 0 auto 20px;
+}
+
+.title {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 32px;
+  text-align: center;
+  word-break: break-word;
+  color: var(--black);
+}
+
+.subtitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 12px;
+  margin-bottom: 2px;
+  position: relative;
+  text-align: center;
+}
+
+.movieRatingContainer {
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.originalName {
+  font-size: 13px;
+  line-height: 20px;
+  letter-spacing: -.35px;
+  word-break: break-word;
+  color: var(--gray-900);
+}
+
+.aboutMovie {
+  font-size: 13px;
+  font-style: normal;
+  line-height: 18px;
+  text-align: center;
+  color: rgba(var(--black-rgb), .6);
+
+  &:not(:first-child) {
+    margin-top: 2px;
+  }
+}

@@ -1,0 +1,28 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 60px;
+
+  @include min-md {
+    padding: 0 194px 74px;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.title {
+  margin: 0 16px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--gray-900);
+}
+
+.list {
+
+}

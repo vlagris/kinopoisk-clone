@@ -1,0 +1,66 @@
+.burgerMenu {
+ display: flex;
+
+}
+
+.button {
+  margin-right: 24px;
+  z-index: 2;
+}
+
+
+.buttonIcon {
+  width: 24px;
+  height: 24px;
+  fill: var(--gray-400);
+}
+
+
+.menu {
+  position: absolute;
+  top: 0;
+  left: -24px;
+  z-index: 1;
+  display: none;
+  width: 280px;
+  background: var(--gray-900);
+  border-radius: 0 0 16px 16px;
+}
+
+
+.menuNavbar {
+  margin: var(--header-height) 0 0;
+  padding: 9px 24px 24px;
+}
+
+
+
+
+
+.menuModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: none;
+  margin-top: var(--header-height);
+  width: 100%;
+  min-height: calc(100vh - var(--header-height));
+  background: var(--gray-900);
+
+  .menuNavbar {
+    margin: 0;
+    padding: 27px 16px 40px;
+  }
+}
+
+
+.menuModalInner {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+
+.menu_active {
+  display: block;
+}

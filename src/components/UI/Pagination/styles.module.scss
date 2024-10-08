@@ -1,0 +1,52 @@
+.pagination {
+  display: flex;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 18px;
+}
+
+
+.btnArrow {
+  width: 36px;
+  height: 36px;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='20' height='20' fill='%23000' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath clip-rule='evenodd' d='m7.284 9.988 6.741-6.459-1.383-1.444-7.5 7.186-.76.727.764.722 7.5 7.091 1.374-1.453-6.736-6.37Z'/%3E%3C/svg%3E");  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 20px;
+
+  &:hover {
+    opacity: .6;
+  }
+}
+
+
+.btnArrowEnd {
+  transform: rotate(180deg);
+}
+
+
+.btnPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  min-width: 36px;
+  height: 36px;
+  min-height: 36px;
+  color: var(--black);
+  border-radius: 8px;
+  transition: background-color .1s ease;
+
+  &:not(:first-child) {
+    margin-left: 8px;
+  }
+
+  &:hover {
+    background: rgba(var(--black-rgb), .05);
+  }
+
+  &.active {
+    background: var(--gray-900);
+    color: var(--white);
+  }
+}
+

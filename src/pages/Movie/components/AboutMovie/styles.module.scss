@@ -1,0 +1,73 @@
+.root {
+
+}
+
+.title {
+  margin-bottom: 9px;
+}
+
+.row {
+  display: flex;
+  align-items: baseline;
+  padding: 8px 0;
+}
+
+.rowTitle {
+  width: 160px;
+  padding-right: 20px;
+  font-size: 13px;
+  line-height: 18px;
+  color: rgba(var(--black-rgb), .6);
+}
+
+.rowValues {
+  flex: 1;
+  font-size: 13px;
+  line-height: 18px;
+  color: rgba(var(--black-rgb), .6);
+}
+
+.rowValue {
+  color: var(--black);
+}
+
+
+.ageRating {
+  color: rgba(var(--gray-800--rgb), .9);
+  border: 1px solid rgba(var(--gray-800--rgb), .9);
+  padding: 3px 4px;
+  font-weight: 600;
+  line-height: 13px;
+  text-transform: uppercase;
+}
+
+
+
+
+
+.root_small {
+
+  .content {
+    padding: 0 16px;
+  }
+
+  .row {
+    padding: 0 0 16px;
+  }
+
+  .rowValues {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .ageRating {
+    display: inline-block;
+    color: rgba(var(--black-rgb), .6);
+    border: 1px solid rgba(var(--black-rgb), .6);
+    padding: 0 4px;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 14px;
+    text-transform: uppercase;
+  }
+}

@@ -1,0 +1,25 @@
+.moviePersonsSection {
+}
+
+.titleSmall {
+  padding: 16px 16px 24px;
+}
+
+.carouselSkeleton {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  padding: 0 16px;
+}
+
+.carouselColSkeleton {
+  &:not(:last-child) {
+    padding-right: 16px;
+  }
+}
+
+.carouselItemSkeleton {
+  &:not(:last-child) {
+    padding-bottom: 16px;
+  }
+}

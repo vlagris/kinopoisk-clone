@@ -1,0 +1,120 @@
+.item {
+  position: relative;
+  min-width: 300px;
+  height: 165px;
+  color: rgba(var(--black-rgb), .9);
+  border-radius: 8px;
+
+  &:not(:last-child) {
+    margin-right: 8px;
+  }
+}
+
+.button {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 16px 20px 23px;
+  font-size: 13px;
+  line-height: 18px;
+  text-align: inherit;
+  background: #f7f7f7;
+}
+
+.shortValue {
+  color: var(--black);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 7;
+  overflow: hidden;
+
+  a {
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+  }
+}
+
+.spoilerValue {
+  filter: blur(4px);
+}
+
+.spoilerOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(var(--gray-50--rgb), .4);
+}
+
+.spoilerIcon {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 12px;
+  background-image: url("data:image/svg+xml,%3csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='m4.849 20.848 16-16-1.698-1.697-2.887 2.887C14.95 5.413 13.51 5 12 5 5.787 5 .75 12 .75 12s1.918 2.665 4.846 4.706l-2.445 2.445 1.698 1.697Zm3.977-7.371a3.5 3.5 0 0 1 4.651-4.651l-4.651 4.65Zm5.73.915a3.61 3.61 0 0 1-.164.163l-4.243 4.243c.602.13 1.22.202 1.851.202 6.213 0 11.25-7 11.25-7s-1.151-1.6-3.032-3.27l-5.663 5.662Z' fill='%23000'/%3e%3c/svg%3e");
+}
+
+.spoilerText {
+  font-size: 13px;
+  line-height: 18px;
+  text-align: center;
+  color: rgba(var(--black-rgb), .9);
+}
+
+
+
+
+
+.modalInfo {
+  display: flex;
+}
+
+.poster {
+  width: 64px;
+  min-width: 64px;
+  height: 96px;
+  margin-right: 16px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px rgba(var(--black-rgb), .05);
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modalTitle {
+  margin-bottom: 6px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+  color: var(--black);
+}
+
+.subtitle {
+  font-size: 13px;
+  line-height: 16px;
+  color: rgba(var(--black-rgb), .6);
+}
+
+
+.modalText {
+  overflow: auto;
+  height: 300px;
+  padding: 12px 16px 20px;
+  font-size: 15px;
+  line-height: 20px;
+  color: var(--gray-900);
+
+  a {
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+  }
+}
+

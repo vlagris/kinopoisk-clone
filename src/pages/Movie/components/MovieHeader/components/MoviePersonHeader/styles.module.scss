@@ -1,0 +1,45 @@
+.personHeader {
+  &:not(:last-child) {
+    margin-bottom: 24px;
+  }
+}
+
+.title {
+  margin-bottom: 15px;
+  font-size: 15px;
+  line-height: 20px;
+  //a {
+  //  padding-right: 2px;
+  //  &:after {
+  //    width: 16px;
+  //  }
+  //}
+}
+
+.titleLink {
+  padding-right: 2px;
+  &:after {
+    width: 16px;
+  }
+}
+
+
+.list {
+  margin-bottom: 12px;
+}
+
+
+.item {
+  margin-bottom: 7px;
+  font-size: 13px;
+  line-height: 15px;
+  color: var(--black);
+}
+
+
+.moreItemsLink {
+  display: inline-block;
+  font-size: 13px;
+  line-height: 15px;
+  color: var(--primary);
+}

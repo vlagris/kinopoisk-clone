@@ -1,0 +1,136 @@
+.searchContainer {
+  display: flex;
+  flex-grow: 0;
+  align-items: center;
+  width: 100%;
+  max-width: 380px;
+}
+
+
+.search {
+  position: relative;
+  width: 100%;
+}
+
+
+.searchForm {
+  display: flex;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  border-radius: 8px;
+  background: var(--gray-800);
+}
+
+.searchForm_active {
+  display: flex;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  background: var(--gray-100);
+}
+
+
+.control {
+  display: flex;
+  padding: 0 5px;
+}
+
+
+.advancedSearch {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  padding: 0 5px;
+}
+
+
+.submit {
+  margin: 0;
+  padding: 0 5px;
+  font-size: 0;
+  cursor: pointer;
+  border: 0;
+  background-color: transparent;
+}
+
+
+.searchModal {
+  width: 100%;
+}
+
+
+.searchFormMobile {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: var(--header-height);
+  background: var(--gray-800);
+}
+
+
+.submitMobile {
+  padding: 0 0 0 20px;
+}
+
+.buttonClose {
+  padding: 0 20px 0 10px;
+}
+
+
+.input {
+  width: 100%;
+  margin: 0;
+  padding: 8px 0 8px 16px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.15;
+  color: #fff;
+  border: none;
+  outline: none;
+  background: transparent;
+
+  &::placeholder {
+    color: var(--gray-400);
+  }
+}
+
+
+.input_active {
+  color: var(--gray-900);
+}
+
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+
+.iconSmall {
+  width: 20px;
+  height: 20px;
+}
+
+.iconLight {
+  fill: var(--gray-500);
+
+  &:hover {
+    @include min-lg {
+      fill: var(--gray-600);
+    }
+  }
+}
+
+.iconDark {
+  fill: var(--gray-400);
+
+  &:hover {
+    @include min-lg {
+      fill: var(--white);
+    }
+  }
+}

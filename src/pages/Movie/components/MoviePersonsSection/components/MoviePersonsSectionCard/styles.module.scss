@@ -1,0 +1,43 @@
+.personCard {
+  display: flex;
+  align-items: center;
+  width: 250px;
+
+  &:not(:last-child) {
+  margin-bottom: 16px;
+}
+}
+
+.img {
+  display: block;
+  width: 40px;
+  height: 60px;
+  object-fit: cover;
+}
+
+.info {
+  overflow: hidden;
+  margin-left: 12px;
+}
+
+.title {
+  display: block;
+  font-size: 15px;
+  line-height: 18px;
+  font-weight: 600;
+  color: var(--black);
+}
+
+.subtitle {
+  display: block;
+  margin-top: 2px;
+  font-size: 13px;
+  line-height: 18px;
+  color: rgba(var(--black-rgb), .6);
+}
+
+.textEllipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

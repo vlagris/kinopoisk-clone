@@ -1,0 +1,60 @@
+.inLists {
+
+}
+
+
+.title {
+  margin-bottom: 10px;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+
+.list {
+  max-height: 387px;
+  overflow: auto;
+}
+
+.item {
+  display: flex;
+  padding: 6px 0;
+
+  &:hover {
+    .title {
+      color: var(--primary);
+    }
+  }
+}
+
+
+.itemImage {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  background-size: cover;
+  object-fit: cover;
+}
+
+
+.itemInfo {
+  flex-grow: 1;
+  padding-top: 6px;
+  margin-left: 16px;
+}
+
+
+.itemTitle {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 18px;
+  color: var(--black);
+  transition: color .1s ease-in-out;
+}
+
+
+.itemSubtitle {
+  font-size: 13px;
+  line-height: 16px;
+  color: rgba(var(--black-rgb), .6);
+}

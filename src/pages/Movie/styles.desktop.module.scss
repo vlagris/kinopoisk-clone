@@ -1,0 +1,36 @@
+.moviePage {
+
+}
+
+
+.main {
+  padding: 60px 0 70px;
+}
+
+.mainContainer {
+  display: grid;
+  max-width: 960px;
+  grid-template-columns: 640px 80px 240px;
+
+  @include min-2lg {
+    max-width: 1200px;
+    grid-template-columns: 800px 80px 320px;
+  }
+}
+
+
+.column {
+  min-width: 100%;
+}
+
+.columnPadding {
+  padding: 0 10px;
+}
+
+
+.sectionContainer {
+  margin-top: 60px;
+}
+
+
+

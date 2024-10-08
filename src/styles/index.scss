@@ -1,0 +1,25 @@
+@import "reset";
+@import "fonts";
+@import "variables";
+@import "container";
+
+
+
+* {
+  font-family: "Graphik LCG", Tahoma, Arial, Verdana, sans-serif;
+}
+
+
+body {
+  background: var(--gray-50);
+}
+
+.bodyOverflow {
+  overflow: hidden;
+}
+
+
+.main {
+  width: 100%;
+  background: var(--white);
+}

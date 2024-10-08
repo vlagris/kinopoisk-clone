@@ -1,0 +1,28 @@
+.item {
+  position: relative;
+  padding: 16px 0 16px 24px;
+  font-size: 14px;
+  line-height: 20px;
+
+  &:not(:first-child) {
+    border-top: 1px solid rgba(var(--gray-900--rgb), .1);
+  }
+
+  &:before {
+    position: absolute;
+    top: 21px;
+    left: 0;
+    display: block;
+    width: 8px;
+    height: 8px;
+    content: "";
+    border-radius: 50%;
+    background-color: rgba(var(--gray-900--rgb), .4);
+  }
+
+  a {
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+  }
+}

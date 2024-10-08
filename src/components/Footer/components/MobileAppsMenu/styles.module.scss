@@ -1,0 +1,17 @@
+.mobileAppsMenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 35px 0 56px;
+}
+
+.mobileAppsMenuItem {
+  width: 154px;
+  height: 46px;
+  opacity: .8;
+
+  &:hover {
+    opacity: 1;
+  }
+}

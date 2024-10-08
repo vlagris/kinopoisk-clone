@@ -1,0 +1,49 @@
+.carousel {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.scrollbar {
+  position: relative;
+  display: flex;
+  //min-width: 0;
+  padding: 0 16px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.item {
+  &:not(:last-child) {
+    padding-right: 8px;
+  }
+}
+
+.itemRating {
+  padding: 16px;
+  background: #f7f7f7;
+}
+
+.itemInfo {
+  white-space: nowrap;
+}
+
+.itemRate {
+  margin-inline-end: 8px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.itemVote {
+  font-size: 15px;
+  line-height: 20px;
+  color: rgba(var(--black-rgb), .4);
+}
+
+.itemTitle {
+  font-size: 13px;
+  line-height: 18px;
+  white-space: nowrap;
+  color: var(--gray-800);
+}
