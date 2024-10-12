@@ -5,6 +5,7 @@ import {kinopoiskdevApi} from "@/services/api/kinopoiskdevApi";
 import {ListsCategories} from "@/pages/Lists/components/ListsCategories";
 import {ListsContent} from "@/pages/Lists/components/ListsContent";
 import classes from "@/pages/Lists/styles.module.scss";
+import {PageTitle} from "@/components/PageTitle";
 
 
 
@@ -35,6 +36,11 @@ function ListsPage() {
 
   return (
     <div className={classes.categories}>
+      <PageTitle title={
+        `Смотреть онлайн лучшие фильмы, 
+      сериалы и мультфильмы в подборках 
+      Кинопоиска в категории “${category}“`
+      }/>
       <div className={classes.header}>
         <h1 className={classes.headerTitle}>Списки</h1>
       </div>

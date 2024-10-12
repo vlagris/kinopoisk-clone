@@ -1,23 +1,23 @@
-import React, {useLayoutEffect} from "react";
+import React from "react";
 import {BrowserView, MobileView} from "react-device-detect";
 import {useParams, useSearchParams} from "react-router-dom";
-import {useMutation, UseMutationResult, useQuery, UseQueryResult} from "react-query";
+import {useQuery, UseQueryResult} from "react-query";
 import {ListType, Movies, PossibleValueByField} from "@/types";
 import {kinopoiskdevApi} from "@/services/api/kinopoiskdevApi";
-import {MovieSortField, MovieTypeField} from "@/services/api/kinopoiskdevApi/types";
+import {MovieSortField, MovieTypeField, SortType} from "@/services/api/kinopoiskdevApi/types";
 
 const ListMoviesDesktopLazy = React.lazy(() => import("./ListMoviesDesktop.tsx"))
 const ListMoviesMobileLazy = React.lazy(() => import("./ListMoviesMobile.tsx"))
 
-const sortFieldMap: {[key: string]: MovieSortField[]} = {
-  votes: ["votes.kp"],
-  rating: ["rating.kp"],
-  date: ["year"],
-  title: ["name"],
+const sortFieldMap: {[key: string]: MovieSortField} = {
+  votes: "votes.kp",
+  rating: "rating.kp",
+  date: "year",
+  title: "name",
 }
 
 export interface ListMoviesViewProps {
-  listInfoResult:  UseMutationResult<ListType, unknown, any>,
+  listInfoResult:  UseQueryResult<ListType | undefined>,
   moviesResult: UseQueryResult<Movies>,
   countriesSelectResult: UseQueryResult<PossibleValueByField[]>,
   genresSelectResult: UseQueryResult<PossibleValueByField[]>,
@@ -34,6 +34,7 @@ function ListMovies() {
   const isSeries = searchParams.has('b', "series");
   const isRussian = searchParams.has('b', "russian");
   const isForeign = searchParams.has('b', "foreign");
+  const isTop = listSlug?.includes("top");
 
 
   const countriesSelect = useQuery(
@@ -45,44 +46,54 @@ function ListMovies() {
     () => kinopoiskdevApi.getMoviesValuesByField({field: "genres.name"}),
   );
 
-  const sortField = sortFieldMap[sort] || undefined;
+
   const countryName = countriesSelect?.data?.find(({slug}) => slug === country)?.name;
   const genreName = genresSelect?.data?.find(({slug}) => slug === genre)?.name;
 
-  const countries = [countryName, isRussian && "Россия", isForeign && "!Россия"];
-  const cleanedCountries = countries.filter(Boolean) as string[];
 
-  const type = [isMovie && "movie", isSeries && "tv-series"];
-  const cleanedType = type.filter(Boolean) as MovieTypeField[];
+  let limit = 50;
+  const sortField: MovieSortField[] = [];
+  const sortType: SortType[] = [];
+  const type = [isMovie && "movie", isSeries && "tv-series"].filter(Boolean) as MovieTypeField[];
+  const countries = [countryName, isRussian && "Россия", isForeign && "!Россия"].filter(Boolean) as string[];
+  const genres: string[] = [genreName].filter(Boolean) as string[];
 
 
-  const movies = useQuery(
-    ["movies", listSlug, sortField, genreName, countries, isMovie, isSeries, page],
-    () => kinopoiskdevApi.getMoviesByFilters({
-      sortField: sortField,
-      sortType: sortField ? ["-1"] : undefined,
-      "countries.name": cleanedCountries.length ? cleanedCountries : undefined,
-      "genres.name": genreName ? [genreName] : undefined,
-      type: cleanedType.length ? cleanedType : undefined,
+  if (sort) {
+    sortField.push(sortFieldMap[sort]);
+    sortType.push("-1");
+  }
+  if (isTop) {
+    sortField.push("rating.kp", "top250");
+    sortType.push("-1", "-1");
+  }
+
+
+  const movies = useQuery({
+    queryKey: ["movies", page, limit, listSlug, sortField, sortType, genreName, countries, type],
+    queryFn: () => kinopoiskdevApi.getMoviesByFilters({
+      limit: limit,
+      page: Number(page) || undefined,
       lists: listSlug ? [listSlug] : undefined,
-      limit: 50,
-      page: Number(page) || undefined
+      sortField: sortField,
+      sortType: sortType,
+      type: type.length ? type : undefined,
+      "countries.name": countries.length ? countries : undefined,
+      "genres.name": genres.length ? countries : undefined,
     }),
-    {
-      enabled: !!countriesSelect.data || !!genresSelect.data
-    }
-  );
-
-
-  const listInfo = useMutation({
-    mutationFn: kinopoiskdevApi.getListBySlug
+    enabled: !!countriesSelect.data || !!genresSelect.data,
   });
 
-  useLayoutEffect(() => {
-    if (listSlug) {
-      listInfo.mutate({slug: listSlug});
-    }
-  }, [listSlug]);
+
+  const listInfo = useQuery({
+    queryKey: ["listInfo", listSlug],
+    queryFn: () => {
+      if (listSlug) {
+        return kinopoiskdevApi.getListBySlug({slug: listSlug})
+      }
+    },
+    enabled: !!listSlug,
+  });
 
 
   return (

@@ -1,5 +1,6 @@
 import {clsx} from "clsx";
 import {isMobile} from "react-device-detect";
+import {PageTitle} from "@/components/PageTitle";
 import {Navbar} from "@/components/Navbar";
 import {MovieTicketsSection} from "@/components/MovieTicketsSection";
 import {ReleaseCalendar} from "./components/ReleaseCalendar";
@@ -9,6 +10,7 @@ import classes from "./styles.module.scss";
 function Home() {
   return (
     <div className={classes.home}>
+      <PageTitle title={"Кинопоиск. Онлайн кинотеатр. Фильмы сериалы мультфильмы и энциклопедия"}/>
 
       {!isMobile &&
         <div className={clsx(classes.column, classes.columnSidebar)}>

@@ -48,8 +48,6 @@ function MovieRating({top250, rating, votes, premiere, variant = "medium"}: Movi
     valueClassName: valueClassName,
   }
 
-  console.log(isPremiered, votes?.await)
-
 
   if (variant === "mini") {
     return (

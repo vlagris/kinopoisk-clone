@@ -4,6 +4,7 @@ import {useQuery} from "react-query";
 import {BrowserView, MobileView} from "react-device-detect";
 import {MovieType} from "@/types";
 import {kinopoiskdevApi} from "@/services/api/kinopoiskdevApi";
+import {PageTitle} from "@/components/PageTitle";
 
 const MovieDesktopLazy = React.lazy(() => import("./MovieDesktop.tsx"))
 const MovieMobileLazy = React.lazy(() => import("./MovieMobile.tsx"))
@@ -26,20 +27,29 @@ function Movie() {
     enabled: !!filmSlug
   })
 
+  const pageTitleInfo = [
+    film.data?.name,
+    film.data?.year,
+    "дата выхода трейлеры актеры отзывы описание на Кинопоиске"
+  ].filter(Boolean).join(', ');
+
 
   console.log(film.data)
 
 
   return (
-    <React.Suspense fallback={<div style={{height: "100vh"}}/>}>
-      <BrowserView renderWithFragment>
-        <MovieDesktopLazy movie={film.data} isSuccess={film.isSuccess}/>
-      </BrowserView>
+    <>
+      <PageTitle title={pageTitleInfo}/>
+      <React.Suspense fallback={<div style={{height: "100vh"}}/>}>
+        <BrowserView renderWithFragment>
+          <MovieDesktopLazy movie={film.data} isSuccess={film.isSuccess}/>
+        </BrowserView>
 
-      <MobileView renderWithFragment>
-        <MovieMobileLazy movie={film.data} isSuccess={film.isSuccess}/>
-      </MobileView>
-    </React.Suspense>
+        <MobileView renderWithFragment>
+          <MovieMobileLazy movie={film.data} isSuccess={film.isSuccess}/>
+        </MobileView>
+      </React.Suspense>
+    </>
   );
 }
 
