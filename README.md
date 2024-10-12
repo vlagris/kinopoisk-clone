@@ -25,7 +25,6 @@ Frontend:
 - React
 - React-router
 - React-query
-- axios
 - Sass
 - Vite
 
@@ -78,8 +77,6 @@ npm run dev
   <p><i>Страница списков</i></p>
   <img alt="List movies page" src="https://github.com/vlagris/kinopoisk-app/blob/main/screenshots/list-movies.jpg">
   <p><i>Страница списка фильмов</i></p>
-<img alt="Account settings page" src="https://github.com/vlagris/kinopoisk-app/blob/main/screenshots/account-settings.png">
-  <p><i>Страница настроек аккаунта</i></p>
   <img alt="Movie page" src="https://github.com/vlagris/kinopoisk-app/blob/main/screenshots/movie-page.jpg">
   <p><i>Страница фильма</i></p>
   <img alt="Search" src="https://github.com/vlagris/kinopoisk-app/blob/main/screenshots/search.jpg">
