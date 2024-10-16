@@ -2,12 +2,28 @@ import React from "react";
 import {BrowserView, MobileView} from "react-device-detect";
 import {useParams, useSearchParams} from "react-router-dom";
 import {useQuery, UseQueryResult} from "react-query";
-import {ListType, Movies, PossibleValueByField} from "@/types";
+import {ListType, Movies, MovieType, PossibleValueByField} from "@/types";
 import {kinopoiskdevApi} from "@/services/api/kinopoiskdevApi";
 import {MovieSortField, MovieTypeField, SortType} from "@/services/api/kinopoiskdevApi/types";
 
 const ListMoviesDesktopLazy = React.lazy(() => import("./ListMoviesDesktop.tsx"))
 const ListMoviesMobileLazy = React.lazy(() => import("./ListMoviesMobile.tsx"))
+
+
+function sortMoviesByTop(item1: MovieType, item2: MovieType) {
+  if (item1.top250 === item2.top250) {
+    return 0;
+  }
+  if (item1.top250 === null) {
+    return 1;
+  }
+  if (item2.top250 === null) {
+    return -1;
+  }
+  return item1.top250 - item2.top250;
+}
+
+
 
 const sortFieldMap: {[key: string]: MovieSortField} = {
   votes: "votes.kp",
@@ -37,6 +53,15 @@ function ListMovies() {
   const isTop = listSlug?.includes("top");
 
 
+  const listInfo = useQuery({
+    queryKey: ["listInfo", listSlug],
+    queryFn: () => {
+      if (listSlug) {
+        return kinopoiskdevApi.getListBySlug({slug: listSlug})
+      }
+    },
+    enabled: !!listSlug,
+  });
   const countriesSelect = useQuery(
     "countriesSelect",
     () => kinopoiskdevApi.getMoviesValuesByField({field: "countries.name"}),
@@ -81,18 +106,13 @@ function ListMovies() {
       "countries.name": countries.length ? countries : undefined,
       "genres.name": genres.length ? countries : undefined,
     }),
-    enabled: !!countriesSelect.data || !!genresSelect.data,
-  });
-
-
-  const listInfo = useQuery({
-    queryKey: ["listInfo", listSlug],
-    queryFn: () => {
-      if (listSlug) {
-        return kinopoiskdevApi.getListBySlug({slug: listSlug})
+    select: (data) => {
+      if (isTop) {
+        data.docs.sort(sortMoviesByTop);
       }
+      return data;
     },
-    enabled: !!listSlug,
+    enabled: !!countriesSelect.data || !!genresSelect.data,
   });
 
 
