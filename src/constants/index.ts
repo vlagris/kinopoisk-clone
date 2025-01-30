@@ -22,11 +22,6 @@ export const PATH_LINK = {
 }
 
 
-export const KINOPOISKDEV_API_URL = "https://api.kinopoisk.dev/";
-export const KINOPOISKDEV_API_KEY = "J8M531X-D6S4NZ8-Q05YD7V-DWFNNTD";
-
-
-
 export const movieItem: MovieType = {
   "id": 535341,
   "externalId": {
@@ -811,13 +806,6 @@ export const movieItem: MovieType = {
     }
   }
 }
-
-
-
-
-
-
-
 
 
 
