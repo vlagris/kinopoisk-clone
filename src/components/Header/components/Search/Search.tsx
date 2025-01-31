@@ -1,6 +1,6 @@
-import React, {useState} from "react";
+import React, {useState, Dispatch, SetStateAction} from "react";
 import {BrowserView, MobileView} from "react-device-detect";
-import {useQuery, UseQueryResult} from "react-query";
+import {useQuery, UseQueryResult} from "@tanstack/react-query";
 import {kinopoiskdevApi} from "@/services/api/kinopoiskdevApi";
 import {Movies} from "@/types";
 
@@ -10,7 +10,7 @@ const SearchMobileLazy = React.lazy(() => import("./SearchMobile.tsx"))
 
 export interface SearchViewProps {
   searchQuery: string,
-  setSearchQuery: React.Dispatch<React.SetStateAction<string>>,
+  setSearchQuery: Dispatch<SetStateAction<string>>,
   moviesResult: UseQueryResult<Movies>
 }
 

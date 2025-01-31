@@ -1,8 +1,8 @@
 import React, {useLayoutEffect, useState} from "react";
-import {BrowserView, MobileView} from "react-device-detect";
 import {useParams, useSearchParams} from "react-router-dom";
+import {BrowserView, MobileView} from "react-device-detect";
+import {UseQueryResult} from "@tanstack/react-query";
 import {ListType} from "@/types";
-import {UseQueryResult} from "react-query";
 import {PageTitle} from "@/components/PageTitle";
 
 
@@ -22,14 +22,14 @@ const listInfoTitles = [
 
 
 export interface ListMoviesInfoProps {
-  listInfoResult: UseQueryResult<ListType | undefined>,
+  listInfo: UseQueryResult<ListType | undefined>,
 }
 
 export interface ListMoviesInfoViewProps extends ListMoviesInfoProps {
   title?: string
 }
 
-function ListMoviesInfo({listInfoResult}: ListMoviesInfoProps) {
+function ListMoviesInfo({listInfo}: ListMoviesInfoProps) {
   const { listSlug } = useParams();
   const [searchParams] = useSearchParams();
   const [title, setTitle] = useState(getListInfoTitle(listSlug));
@@ -52,7 +52,7 @@ function ListMoviesInfo({listInfoResult}: ListMoviesInfoProps) {
 
 
   const pageTitle = [
-    listInfoResult.data?.name || title,
+    listInfo.data?.name || title,
     "Кинопоиск"
   ].filter(Boolean).join(" — ");
 
@@ -62,11 +62,11 @@ function ListMoviesInfo({listInfoResult}: ListMoviesInfoProps) {
       <PageTitle title={pageTitle}/>
       <React.Suspense>
         <BrowserView renderWithFragment>
-          <ListMoviesInfoDesktopLazy listInfoResult={listInfoResult} title={title}/>
+          <ListMoviesInfoDesktopLazy listInfo={listInfo} title={title}/>
         </BrowserView>
 
         <MobileView renderWithFragment>
-          <ListMoviesInfoMobileLazy listInfoResult={listInfoResult} title={title}/>
+          <ListMoviesInfoMobileLazy listInfo={listInfo} title={title}/>
         </MobileView>
       </React.Suspense>
     </>

@@ -4,16 +4,18 @@ import {SelectModalContext} from "./SelectModalContext.ts";
 import classes from "./styles.module.scss";
 
 
+type SelectItemValue = string | number | undefined | null
+
 
 export type SelectedItem = {
-  value: any;
+  value: SelectItemValue;
   children: React.ReactNode;
 }
 
 interface SelectFiltersSelectModalProps {
   title?: string,
   children?: React.ReactNode,
-  onChange?: (value: any) => void,
+  onChange?: (value: SelectItemValue) => void,
 }
 
 function SelectModal({title, children, onChange = () => {}}: SelectFiltersSelectModalProps) {

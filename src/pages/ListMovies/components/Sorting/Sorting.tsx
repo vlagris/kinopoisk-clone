@@ -23,7 +23,6 @@ function Sorting() {
       <SelectMenu>
         <SelectItem
           className={classes.itemTitle}
-          value=""
           active={!sort}
         >
           По порядку

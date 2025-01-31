@@ -1,7 +1,7 @@
 import {kinopoiskdevClient} from "@/services/api/kinopoiskdevApi/kinopoiskdevClient.ts";
 import {
-  IGetMovieById,
-  IGetMoviesByFilters, IGetMoviesBySearch,
+  IGetMoviesByFilters,
+  IGetMoviesBySearch,
   IGetMoviesValuesByField,
   MovieResponse,
   MoviesResponse
@@ -9,33 +9,29 @@ import {
 import {PossibleValueByField} from "@/types";
 
 
-export async function getMovieById({id}: IGetMovieById) {
+export async function getMovieById(id: number | string) {
   try {
-    const response = await kinopoiskdevClient.get<MovieResponse>(
-      `/v1.4/movie/${id}`,
-      {
-      }
-    )
+    const response = await kinopoiskdevClient.get<MovieResponse>(`/v1.4/movie/${id}`);
     return response.data;
-  } catch (err) {
-    return Promise.reject(err)
+  } catch (error) {
+    throw error;
   }
 }
 
 
 export async function getMoviesByFilters(requestParams: IGetMoviesByFilters) {
   try {
-    const params = { page: 1, limit: 10 }
+    const defaultParams = { page: 1, limit: 10 }
     const response = await kinopoiskdevClient.get<MoviesResponse>(
       "/v1.4/movie",
       {
-        params: { ...params, ...requestParams },
+        params: { ...defaultParams, ...requestParams },
         paramsSerializer: { indexes: null }
       }
     )
     return response.data;
-  } catch (err) {
-    return Promise.reject(err)
+  } catch (error) {
+    throw error;
   }
 }
 
@@ -50,8 +46,8 @@ export async function getMoviesValuesByField(requestParams: IGetMoviesValuesByFi
       }
     )
     return response.data;
-  } catch (err) {
-    return Promise.reject(err)
+  } catch (error) {
+    throw error;
   }
 }
 
@@ -65,8 +61,8 @@ export async function getMoviesBySearch(requestParams: IGetMoviesBySearch) {
       }
     )
     return response.data;
-  } catch (err) {
-    return Promise.reject(err)
+  } catch (error) {
+    throw error;
   }
 }
 

@@ -11,9 +11,7 @@ import classes from "@/pages/ListMovies/styles.desktop.module.scss";
 
 
 
-function ListMoviesDesktop({ listInfoResult, moviesResult, countriesSelectResult, genresSelectResult }: ListMoviesViewProps) {
-  const movies = moviesResult.data;
-  const listInfo = listInfoResult.data;
+function ListMoviesDesktop({ listInfo, movies, countriesSelect, genresSelect }: ListMoviesViewProps) {
 
 
   return (
@@ -22,37 +20,37 @@ function ListMoviesDesktop({ listInfoResult, moviesResult, countriesSelectResult
 
       <div className={classes.sidebar}>
         <div className={classes.sidebarFilters}>
-          <ToggleFilters category={listInfo?.category}/>
+          <ToggleFilters category={listInfo.data?.category}/>
           <SelectFilters
-            countriesResult={countriesSelectResult}
-            genresResult={genresSelectResult}
+            countries={countriesSelect}
+            genres={genresSelect}
           />
         </div>
       </div>
 
       <div className={classes.content}>
-        <ListMoviesInfo listInfoResult={listInfoResult}/>
+        <ListMoviesInfo listInfo={listInfo}/>
 
         <div className={classes.listHeader}>
           <ListMoviesListsFilters>
             <ListMoviesListsFiltersItem
               to="."
               title="Все"
-              count={movies?.total}
+              count={movies.data?.total}
             />
           </ListMoviesListsFilters>
           <Sorting/>
         </div>
 
         <ListMoviesList
-          movies={movies?.docs}
-          isSuccess={moviesResult.isSuccess}
+          movies={movies.data?.docs}
+          isSuccess={movies.isSuccess}
         />
 
         <ListMoviesPagination
           className={classes.pagination}
-          page={movies?.page}
-          pages={movies?.pages}
+          page={movies.data?.page}
+          pages={movies.data?.pages}
         />
       </div>
     </div>

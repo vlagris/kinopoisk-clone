@@ -14,17 +14,13 @@ export type ListsResponse = ListsType;
 export interface IGetLists {
   page?: number,
   limit?: number,
-  selectFields?: ListSelectFields[],
-  notNullFields?: ListSelectFields[],
-  sortField?:  ListSortFields[],
-  sortType?: SortType[],
-  slug?: string[],
-  category?: ListCategory[],
-  moviesCount?: string[],
-  updatedAt?: string[],
-  createdAt?: string[]
-}
-
-export interface IGetListBySlug {
-  slug: string
+  selectFields?: ListSelectFields | ListSelectFields[],
+  notNullFields?: ListSelectFields | ListSelectFields[],
+  sortField?: ListSortFields | ListSortFields[],
+  sortType?: SortType | SortType[],
+  slug?: string | string[],
+  category?: ListCategory | ListCategory[],
+  moviesCount?: string | string[],
+  updatedAt?: string | string[],
+  createdAt?: string | string[]
 }

@@ -1,6 +1,6 @@
 import {clsx} from "clsx";
 import {isMobile} from "react-device-detect";
-import {useQuery} from "react-query";
+import {useQuery} from "@tanstack/react-query";
 import {kinopoiskdevApi} from "@/services/api/kinopoiskdevApi";
 import {MovieSectionTitle} from "@/components/MovieSectionTitle";
 import {ReleaseCalendarItem} from "@/pages/Home/components/ReleaseCalendar/components/ReleaseCalendarItem";

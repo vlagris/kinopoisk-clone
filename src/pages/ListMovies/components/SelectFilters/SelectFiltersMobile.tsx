@@ -8,11 +8,9 @@ import FilterIcon from "@/assets/icons/filter.svg?react";
 
 
 
-function SelectFiltersMobile({countriesResult, genresResult}: SelectFiltersProps) {
+function SelectFiltersMobile({countries, genres}: SelectFiltersProps) {
   const [show, setShow] = useState(false);
   const {searchParams, updateSearchParam} = useCustomSearchParams();
-  const countries = countriesResult.data;
-  const genres = genresResult.data;
   const country = searchParams.get("country");
   const genre = searchParams.get("genre");
 
@@ -37,6 +35,7 @@ function SelectFiltersMobile({countriesResult, genresResult}: SelectFiltersProps
               <ModalCloseButton/>
             </ModalHeader>
 
+
             <div>
               <SelectModal
                 title="Страны"
@@ -45,7 +44,7 @@ function SelectFiltersMobile({countriesResult, genresResult}: SelectFiltersProps
                 <SelectModalItem active={!country}>
                   Все страны
                 </SelectModalItem>
-                {countries?.map(({name, slug}) => (
+                {countries.data?.map(({name, slug}) => (
                   <SelectModalItem key={slug} value={slug} active={country === slug}>
                     {name}
                   </SelectModalItem>
@@ -59,7 +58,7 @@ function SelectFiltersMobile({countriesResult, genresResult}: SelectFiltersProps
                 <SelectModalItem active={!genre}>
                   Все жанры
                 </SelectModalItem>
-                {genres?.map(({name, slug}) => (
+                {genres.data?.map(({name, slug}) => (
                   <SelectModalItem key={slug} value={slug} active={genre === slug}>
                     {name}
                   </SelectModalItem>

@@ -1,4 +1,4 @@
-import {useQuery} from "react-query";
+import {useQuery} from "@tanstack/react-query";
 import {kinopoiskdevApi} from "@/services/api/kinopoiskdevApi";
 import {CarouselSettings} from "@/components/Carousel/Carousel.tsx";
 import {Carousel, CarouselItem} from "@/components/Carousel";
@@ -15,7 +15,7 @@ interface MovieTicketsSectionProps {
 
 function MovieTicketsSection({settings, className}: MovieTicketsSectionProps) {
   const {data: movies, isSuccess} = useQuery({
-    queryKey: "moviesTickets",
+    queryKey: ["moviesTickets"],
     queryFn: () => kinopoiskdevApi.getMoviesByFilters({
       limit: 20,
       notNullFields: ["premiere.russia"],

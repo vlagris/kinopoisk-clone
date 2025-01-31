@@ -6,10 +6,8 @@ import classes from "./styles.desktop.module.scss";
 
 
 
-function SelectFiltersDesktop({countriesResult, genresResult}: SelectFiltersProps) {
+function SelectFiltersDesktop({countries, genres}: SelectFiltersProps) {
   const {searchParams, updateSearchParam} = useCustomSearchParams();
-  const countries = countriesResult.data;
-  const genres = genresResult.data;
   const country = searchParams.get("country");
   const genre = searchParams.get("genre");
 
@@ -20,13 +18,13 @@ function SelectFiltersDesktop({countriesResult, genresResult}: SelectFiltersProp
         <Select onChange={(value) => updateSearchParam("country", value)}>
           <SelectButton/>
 
-          {countriesResult.isSuccess &&
+          {countries.isSuccess &&
             <SelectMenu className={classes.menu} inheritWidth>
               <div className={classes.list}>
-                <SelectItem value={""} active={!country}>
+                <SelectItem active={!country}>
                   Все страны
                 </SelectItem>
-                {countries?.map(({name, slug}) => (
+                {countries.data?.map(({name, slug}) => (
                   <SelectItem key={slug} value={slug} active={country === slug}>
                     {name}
                   </SelectItem>
@@ -41,13 +39,13 @@ function SelectFiltersDesktop({countriesResult, genresResult}: SelectFiltersProp
         <Select onChange={(value) => updateSearchParam("genre", value)}>
           <SelectButton/>
 
-          {genresResult.isSuccess &&
+          {genres.isSuccess &&
             <SelectMenu className={classes.menu} inheritWidth>
               <div className={classes.list}>
-                <SelectItem value={""} active={!genre}>
+                <SelectItem active={!genre}>
                   Все жанры
                 </SelectItem>
-                {genres?.map(({name, slug}) => (
+                {genres.data?.map(({name, slug}) => (
                   <SelectItem key={slug} value={slug} active={genre === slug}>
                     {name}
                   </SelectItem>

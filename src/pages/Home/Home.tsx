@@ -8,6 +8,7 @@ import classes from "./styles.module.scss";
 
 
 function Home() {
+
   return (
     <div className={classes.home}>
       <PageTitle title={"Кинопоиск. Онлайн кинотеатр. Фильмы сериалы мультфильмы и энциклопедия"}/>

@@ -1,10 +1,10 @@
 import React from "react";
 import {BrowserView, MobileView} from "react-device-detect";
 import {useParams, useSearchParams} from "react-router-dom";
-import {useQuery, UseQueryResult} from "react-query";
+import {useQuery, UseQueryResult} from '@tanstack/react-query'
 import {ListType, Movies, MovieType, PossibleValueByField} from "@/types";
 import {kinopoiskdevApi} from "@/services/api/kinopoiskdevApi";
-import {MovieSortField, MovieTypeField, SortType} from "@/services/api/kinopoiskdevApi/types";
+import {MovieSortField, SortType} from "@/services/api/kinopoiskdevApi/types";
 
 const ListMoviesDesktopLazy = React.lazy(() => import("./ListMoviesDesktop.tsx"))
 const ListMoviesMobileLazy = React.lazy(() => import("./ListMoviesMobile.tsx"))
@@ -24,6 +24,16 @@ function sortMoviesByTop(item1: MovieType, item2: MovieType) {
 }
 
 
+const getMovieType = (values: string[]) => {
+  const result = values.find(item => item === "films" || item === "series");
+  if (result === "films") {
+    return "movie"
+  }
+  if (result === "series") {
+    return "tv-series"
+  }
+}
+
 
 const sortFieldMap: {[key: string]: MovieSortField} = {
   votes: "votes.kp",
@@ -33,10 +43,10 @@ const sortFieldMap: {[key: string]: MovieSortField} = {
 }
 
 export interface ListMoviesViewProps {
-  listInfoResult:  UseQueryResult<ListType | undefined>,
-  moviesResult: UseQueryResult<Movies>,
-  countriesSelectResult: UseQueryResult<PossibleValueByField[]>,
-  genresSelectResult: UseQueryResult<PossibleValueByField[]>,
+  listInfo:  UseQueryResult<ListType | undefined>,
+  movies: UseQueryResult<Movies>,
+  countriesSelect: UseQueryResult<PossibleValueByField[]>,
+  genresSelect: UseQueryResult<PossibleValueByField[]>,
 }
 
 function ListMovies() {
@@ -46,8 +56,6 @@ function ListMovies() {
   const country = searchParams.get('country');
   const genre = searchParams.get('genre');
   const sort = searchParams.get('sort') || "";
-  const isMovie = searchParams.has('b', "films");
-  const isSeries = searchParams.has('b', "series");
   const isRussian = searchParams.has('b', "russian");
   const isForeign = searchParams.has('b', "foreign");
   const isTop = listSlug?.includes("top");
@@ -55,21 +63,17 @@ function ListMovies() {
 
   const listInfo = useQuery({
     queryKey: ["listInfo", listSlug],
-    queryFn: () => {
-      if (listSlug) {
-        return kinopoiskdevApi.getListBySlug({slug: listSlug})
-      }
-    },
-    enabled: !!listSlug,
+    queryFn: () => kinopoiskdevApi.getListBySlug(listSlug as string),
+    enabled: !!listSlug
   });
-  const countriesSelect = useQuery(
-    "countriesSelect",
-    () => kinopoiskdevApi.getMoviesValuesByField({field: "countries.name"}),
-  );
-  const genresSelect = useQuery(
-    "genresSelect",
-    () => kinopoiskdevApi.getMoviesValuesByField({field: "genres.name"}),
-  );
+  const countriesSelect = useQuery({
+    queryKey: ["countriesField"],
+    queryFn: () => kinopoiskdevApi.getMoviesValuesByField({field: "countries.name"}),
+});
+  const genresSelect = useQuery({
+    queryKey: ["genresField"],
+    queryFn: () => kinopoiskdevApi.getMoviesValuesByField({field: "genres.name"}),
+  });
 
 
   const countryName = countriesSelect?.data?.find(({slug}) => slug === country)?.name;
@@ -79,9 +83,8 @@ function ListMovies() {
   let limit = 50;
   const sortField: MovieSortField[] = [];
   const sortType: SortType[] = [];
-  const type = [isMovie && "movie", isSeries && "tv-series"].filter(Boolean) as MovieTypeField[];
+  const type = getMovieType(searchParams.getAll("b"));
   const countries = [countryName, isRussian && "Россия", isForeign && "!Россия"].filter(Boolean) as string[];
-  const genres: string[] = [genreName].filter(Boolean) as string[];
 
 
   if (sort) {
@@ -99,12 +102,12 @@ function ListMovies() {
     queryFn: () => kinopoiskdevApi.getMoviesByFilters({
       limit: limit,
       page: Number(page) || undefined,
-      lists: listSlug ? [listSlug] : undefined,
+      lists: listSlug,
       sortField: sortField,
       sortType: sortType,
-      type: type.length ? type : undefined,
+      type: type,
       "countries.name": countries.length ? countries : undefined,
-      "genres.name": genres.length ? countries : undefined,
+      "genres.name": genreName,
     }),
     select: (data) => {
       if (isTop) {
@@ -120,18 +123,18 @@ function ListMovies() {
     <React.Suspense fallback={<div style={{height: "100vh"}}/>}>
       <BrowserView>
         <ListMoviesDesktopLazy
-          moviesResult={movies}
-          countriesSelectResult={countriesSelect}
-          genresSelectResult={genresSelect}
-          listInfoResult={listInfo}
+          movies={movies}
+          countriesSelect={countriesSelect}
+          genresSelect={genresSelect}
+          listInfo={listInfo}
         />
       </BrowserView>
       <MobileView>
         <ListMoviesMobileLazy
-          moviesResult={movies}
-          countriesSelectResult={countriesSelect}
-          genresSelectResult={genresSelect}
-          listInfoResult={listInfo}
+          movies={movies}
+          countriesSelect={countriesSelect}
+          genresSelect={genresSelect}
+          listInfo={listInfo}
         />
       </MobileView>
     </React.Suspense>

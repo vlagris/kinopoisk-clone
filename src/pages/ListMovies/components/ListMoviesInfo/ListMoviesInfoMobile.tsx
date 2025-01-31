@@ -4,24 +4,23 @@ import Skeleton from "@/components/Skeleton";
 
 
 
-function ListMoviesInfoMobile({listInfoResult, title}: ListMoviesInfoViewProps) {
-  const listInfo = listInfoResult.data
+function ListMoviesInfoMobile({listInfo, title}: ListMoviesInfoViewProps) {
 
   return (
     <div className={classes.info}>
-      {listInfo?.cover?.url &&
+      {listInfo.data?.cover?.url &&
         <div className={classes.coverWrapper}>
           <img
             className={classes.cover}
-            src={listInfo.cover.url}
-            alt={listInfo.name}
+            src={listInfo.data.cover.url}
+            alt={listInfo.data.name}
           />
         </div>
       }
 
       <h1 className={classes.title}>
-        {listInfoResult.isSuccess || listInfoResult.isIdle ? (
-          listInfo?.name || title
+        {listInfo.isSuccess || listInfo.fetchStatus === "idle" ? (
+          listInfo.data?.name || title
         ):(
           <Skeleton variant="text" width={"70%"} />
         )}

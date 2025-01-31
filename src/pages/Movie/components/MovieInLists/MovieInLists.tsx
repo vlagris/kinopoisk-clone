@@ -1,5 +1,5 @@
+import {useQuery} from "@tanstack/react-query";
 import {MovieListType} from "@/types";
-import {useQuery} from "react-query";
 import {kinopoiskdevApi} from "@/services/api/kinopoiskdevApi";
 import {MovieSectionTitle} from "@/components/MovieSectionTitle";
 import {MovieInListsSkeleton} from "./components/MovieInListsSkeleton";
@@ -15,11 +15,7 @@ interface MovieInListsProps {
 function MovieInLists({movieLists, isSuccess}: MovieInListsProps) {
   const lists = useQuery({
     queryKey: ["lists", movieLists],
-    queryFn: () => {
-      if (movieLists) {
-        return kinopoiskdevApi.getLists({slug: movieLists})
-      }
-    },
+    queryFn: () => kinopoiskdevApi.getLists({slug: movieLists as string[]}),
     enabled: !!(movieLists && movieLists.length > 0),
   })
 

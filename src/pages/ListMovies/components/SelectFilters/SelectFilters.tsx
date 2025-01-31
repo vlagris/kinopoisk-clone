@@ -1,7 +1,7 @@
 import React from "react";
+import {UseQueryResult} from "@tanstack/react-query";
 import {BrowserView, MobileView} from "react-device-detect";
 import {PossibleValueByField} from "@/types";
-import {UseQueryResult} from "react-query";
 
 
 
@@ -10,8 +10,8 @@ const SelectFiltersMobileLazy = React.lazy(() => import("./SelectFiltersMobile.t
 
 
 export interface SelectFiltersProps {
-  countriesResult: UseQueryResult<PossibleValueByField[]>,
-  genresResult: UseQueryResult<PossibleValueByField[]>,
+  countries: UseQueryResult<PossibleValueByField[]>,
+  genres: UseQueryResult<PossibleValueByField[]>,
 
 }
 

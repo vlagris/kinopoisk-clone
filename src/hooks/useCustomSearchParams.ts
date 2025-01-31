@@ -1,15 +1,18 @@
 import {useSearchParams} from "react-router-dom";
+import {SearchParamsNames} from "@/types";
+
+
 
 export function useCustomSearchParams() {
   const [searchParams, setSearchParams] = useSearchParams();
 
 
-  function updateSearchParam(name: string, value: string) {
+  function updateSearchParam(name: SearchParamsNames, value: string | number | null | undefined) {
     if (searchParams.get(name) === value) {
       return;
     }
-    if (value) {
-      searchParams.set(name, value);
+    if (value != null) {
+      searchParams.set(name, value.toString());
       setSearchParams(searchParams);
     }
     else if (searchParams.has(name)) {

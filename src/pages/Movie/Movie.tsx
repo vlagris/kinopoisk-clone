@@ -1,6 +1,6 @@
 import React from "react";
 import {useParams} from "react-router-dom";
-import {useQuery} from "react-query";
+import {useQuery} from "@tanstack/react-query";
 import {BrowserView, MobileView} from "react-device-detect";
 import {MovieType} from "@/types";
 import {kinopoiskdevApi} from "@/services/api/kinopoiskdevApi";
@@ -19,11 +19,7 @@ function Movie() {
   const {filmSlug} = useParams();
   const film = useQuery({
     queryKey: ["film", filmSlug],
-    queryFn: () => {
-      if (filmSlug) {
-        return kinopoiskdevApi.getMovieById({id: filmSlug})
-      }
-    },
+    queryFn: () => kinopoiskdevApi.getMovieById(filmSlug as string),
     enabled: !!filmSlug
   })
 
@@ -32,9 +28,6 @@ function Movie() {
     film.data?.year,
     "дата выхода трейлеры актеры отзывы описание на Кинопоиске"
   ].filter(Boolean).join(', ');
-
-
-  console.log(film.data)
 
 
   return (

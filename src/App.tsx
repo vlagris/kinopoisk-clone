@@ -1,6 +1,6 @@
 import {RouterProvider} from "react-router-dom";
 import {router} from "@/routes";
-import {QueryClient, QueryClientProvider} from "react-query";
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 
 
 const queryClient = new QueryClient({
@@ -8,7 +8,6 @@ const queryClient = new QueryClient({
     queries: {
       retry: 1,
       staleTime: Infinity,
-      cacheTime: 1000 * 60 * 60,
     },
   },
 });
