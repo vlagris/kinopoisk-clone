@@ -32,7 +32,7 @@ export interface ListMoviesInfoViewProps {
 function ListMoviesInfo({listInfo}: ListMoviesInfoProps) {
   const { listSlug } = useParams();
   const [searchParams] = useSearchParams();
-  const [title, setTitle] = useState(listInfoTitles[5].title);
+  const [title, setTitle] = useState(listInfoTitles[4].title);
 
 
   useLayoutEffect(() => {
