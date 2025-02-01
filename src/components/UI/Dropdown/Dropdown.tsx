@@ -1,40 +1,35 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useRef, useState, ReactNode} from 'react';
 import {DropdownContext} from "@/components/UI/Dropdown/DropdownContext.ts";
 import classes from "@/components/UI/Dropdown/styles.module.scss";
 
 
-export type SelectElementsType = {
-  toggle?: HTMLButtonElement,
-  menu?: HTMLDivElement
+
+interface DropdownProps {
+  children?: ReactNode,
 }
 
-interface CustomSelectProps {
-  children?: React.ReactNode,
-}
-
-function Dropdown({ children }: CustomSelectProps) {
+function Dropdown({ children }: DropdownProps) {
   const [show, setShow] = useState(false);
-  const [elements, setElements] = useState<SelectElementsType>({});
+  const [toggle, seToggle] = useState<HTMLButtonElement | null>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       const eventTarget = event.target as Element
-      const toggleElement = elements.toggle;
-      const menuElement = elements.menu;
-      if (!toggleElement?.contains(eventTarget) && !menuElement?.contains(eventTarget)) {
-        setShow(false);
+      if (show && ref.current && !ref.current.contains(eventTarget)) {
+        setShow(false)
       }
     }
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [elements]);
+  }, [show]);
 
 
   return (
-    <DropdownContext.Provider value={{ show, setShow, elements, setElements }}>
-      <div className={classes.dropdown}>
+    <DropdownContext.Provider value={{ show, setShow, toggle, seToggle}}>
+      <div ref={ref} className={classes.dropdown}>
         {children}
       </div>
     </DropdownContext.Provider>

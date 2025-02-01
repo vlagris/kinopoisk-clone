@@ -2,16 +2,38 @@
   position: relative;
 }
 
+//.dropdownLeft {
+//  .menu {
+//    right: 0;
+//  }
+//}
+//
+//
+//.dropdownTop {
+//  .menu {
+//    bottom: 100%;
+//  }
+//}
 
 .menu {
-  margin: 16px 0;
   position: absolute;
+  z-index: 1;
+  margin: 16px 0;
   visibility: hidden;
 }
 
 
 .menu_show {
   visibility: visible;
+}
+
+
+.menuLeft {
+  right: 0;
+}
+
+.menuTop {
+  bottom: 100%;
 }
 
 

@@ -1,18 +1,17 @@
-import React, { createContext } from "react";
-import {SelectElementsType} from "@/components/UI/Dropdown/Dropdown.tsx";
+import { createContext, Dispatch, SetStateAction } from "react";
 
 
 
 type IDropdownContext = {
   show: boolean,
-  setShow: React.Dispatch<React.SetStateAction<boolean>>,
-  elements: SelectElementsType,
-  setElements: React.Dispatch<React.SetStateAction<SelectElementsType>>
+  setShow: Dispatch<SetStateAction<boolean>>,
+  toggle: HTMLButtonElement | null,
+  seToggle: Dispatch<SetStateAction< HTMLButtonElement | null>>,
 }
 
 export const DropdownContext = createContext<IDropdownContext>({
   show: false,
   setShow: () => {},
-  elements: {},
-  setElements: () => {},
+  toggle: null,
+  seToggle: () => {},
 });
