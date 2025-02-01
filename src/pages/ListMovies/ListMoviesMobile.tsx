@@ -2,7 +2,7 @@ import {ListMoviesViewProps} from "@/pages/ListMovies/ListMovies.tsx";
 import {ListMoviesHeader} from "@/pages/ListMovies/components/ListMoviesHeader";
 import {ListMoviesInfo} from "@/pages/ListMovies/components/ListMoviesInfo";
 import {Sorting} from "@/pages/ListMovies/components/Sorting";
-import {SelectFilters} from "@/pages/ListMovies/components/SelectFilters";
+import {SelectFiltersMobile} from "@/pages/ListMovies/components/SelectFilters";
 import {ToggleFilters} from "@/pages/ListMovies/components/ToggleFilters";
 import {ListMoviesListsFilters, ListMoviesListsFiltersItem} from "@/pages/ListMovies/components/ListMoviesListsFilters";
 import {ListMoviesPagination} from "@/pages/ListMovies/components/ListMoviesPagination";
@@ -23,7 +23,7 @@ function ListMoviesMobile({ listInfo, movies, countriesSelect, genresSelect }: L
       <div className={classes.topBar}>
         <div className={classes.topBarList}>
           <div className={classes.topBarItemWrap}>
-            <SelectFilters countries={countriesSelect} genres={genresSelect}/>
+            <SelectFiltersMobile countries={countriesSelect} genres={genresSelect}/>
           </div>
           <div className={classes.topBarItemWrap}>
             <Sorting/>

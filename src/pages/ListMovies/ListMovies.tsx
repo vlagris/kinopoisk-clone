@@ -1,7 +1,7 @@
-import React from "react";
+import React, {useLayoutEffect} from "react";
 import {BrowserView, MobileView} from "react-device-detect";
 import {useParams, useSearchParams} from "react-router-dom";
-import {useQuery, UseQueryResult} from '@tanstack/react-query'
+import {useQuery, useMutation, UseQueryResult, UseMutationResult} from '@tanstack/react-query'
 import {ListType, Movies, MovieType, PossibleValueByField} from "@/types";
 import {kinopoiskdevApi} from "@/services/api/kinopoiskdevApi";
 import {MovieSortField, SortType} from "@/services/api/kinopoiskdevApi/types";
@@ -43,7 +43,7 @@ const sortFieldMap: {[key: string]: MovieSortField} = {
 }
 
 export interface ListMoviesViewProps {
-  listInfo:  UseQueryResult<ListType | undefined>,
+  listInfo: UseMutationResult<ListType, Error, string>,
   movies: UseQueryResult<Movies>,
   countriesSelect: UseQueryResult<PossibleValueByField[]>,
   genresSelect: UseQueryResult<PossibleValueByField[]>,
@@ -61,10 +61,9 @@ function ListMovies() {
   const isTop = listSlug?.includes("top");
 
 
-  const listInfo = useQuery({
-    queryKey: ["listInfo", listSlug],
-    queryFn: () => kinopoiskdevApi.getListBySlug(listSlug as string),
-    enabled: !!listSlug
+  const listInfo = useMutation({
+    mutationKey: ["listInfo", listSlug],
+    mutationFn: kinopoiskdevApi.getListBySlug,
   });
   const countriesSelect = useQuery({
     queryKey: ["countriesField"],
@@ -117,6 +116,13 @@ function ListMovies() {
     },
     enabled: !!countriesSelect.data || !!genresSelect.data,
   });
+
+
+  useLayoutEffect(() => {
+    if (listSlug) {
+      listInfo.mutate(listSlug)
+    }
+  }, [listSlug]);
 
 
   return (

@@ -26,7 +26,7 @@ function ReleaseCalendarItem({ movie, index }: ReleaseCalendarItemProps) {
     <li className={clsx(classes.root, isMobile && classes.root_small)}>
       {!isMobile &&
         <span className={classes.index}>
-          {index + "."}
+          {index}.
         </span>
       }
       <Link to={PATH_LINK.MOVIE(movie.id)} className={classes.posterLink}>
