@@ -1,8 +1,8 @@
-import React, {useRef} from "react";
-import {clsx} from "clsx";
+import {useRef, ReactNode} from "react";
 import {isMobile} from "react-device-detect";
 import {Navigation, FreeMode, Grid} from 'swiper/modules';
 import { Swiper, SwiperProps } from 'swiper/react';
+import {clsx} from "clsx";
 import 'swiper/scss';
 import 'swiper/scss/grid';
 import classes from "./styles.module.scss";
@@ -10,25 +10,21 @@ import ArrowRightIcon from "@/assets/icons/arrow-right.svg?react";
 
 
 
-export type CarouselSettings = {
-  desktop?: SwiperProps,
-  mobile?: SwiperProps
-}
-
-interface CarouselProps {
-  settings?: CarouselSettings,
-  children?: React.ReactNode,
+interface CarouselProps extends SwiperProps {
+  children?: ReactNode,
   buttonNextClassName?: string
   buttonPrevClassName?: string
 }
 
-function Carousel({settings, children, buttonNextClassName, buttonPrevClassName}: CarouselProps) {
+function Carousel({children, buttonNextClassName, buttonPrevClassName, ...swiperProps}: CarouselProps) {
   const navigationPrevRef = useRef<HTMLButtonElement>(null);
   const navigationNextRef = useRef<HTMLButtonElement>(null);
 
 
-  const swiperSettingsDesktop: SwiperProps = {
+  const defaultSettingsDesktop: SwiperProps = {
     modules: [Navigation, Grid],
+    slidesPerView: "auto",
+    spaceBetween: 8,
     navigation: {
       prevEl: navigationPrevRef.current,
       nextEl: navigationNextRef.current,
@@ -39,50 +35,49 @@ function Carousel({settings, children, buttonNextClassName, buttonPrevClassName}
         swiper.params.navigation.prevEl = navigationPrevRef.current;
         swiper.params.navigation.nextEl = navigationNextRef.current;
       }
-    },
-    ...settings?.desktop
+    }
   }
 
-  const swiperSettingsMobile: SwiperProps = {
+  const defaultSettingsMobile: SwiperProps = {
     modules: [FreeMode, Grid],
     slidesPerView: "auto",
     freeMode: true,
     slidesOffsetAfter: 16,
     slidesOffsetBefore: 16,
-    ...settings?.mobile
   }
 
 
-  const swiperSettings = isMobile ? swiperSettingsMobile : swiperSettingsDesktop;
+  const swiperSettings = isMobile ? defaultSettingsMobile : defaultSettingsDesktop;
 
   return (
     <div className={classes.carouselContainer}>
       <Swiper
         className={classes.carousel}
         {...swiperSettings}
+        {...swiperProps}
       >
         {children}
 
         {!isMobile &&
-          <>
-            <button
-              ref={navigationPrevRef}
-              className={clsx(classes.carouselBtn, classes.carouselPrev, buttonPrevClassName)}
-            >
+          <button
+            ref={navigationPrevRef}
+            className={clsx(classes.carouselBtn, classes.carouselPrev, buttonPrevClassName)}
+          >
               <span className={classes.carouselBtnInner}>
                 <ArrowRightIcon className={classes.carouselIcon}/>
               </span>
-            </button>
+          </button>
+        }
 
-            <button
-              ref={navigationNextRef}
-              className={clsx(classes.carouselBtn, classes.carouselNext, buttonNextClassName)}
-            >
+        {!isMobile &&
+          <button
+            ref={navigationNextRef}
+            className={clsx(classes.carouselBtn, classes.carouselNext, buttonNextClassName)}
+          >
             <span className={classes.carouselBtnInner}>
               <ArrowRightIcon className={classes.carouselIcon}/>
             </span>
-            </button>
-          </>
+          </button>
         }
       </Swiper>
     </div>

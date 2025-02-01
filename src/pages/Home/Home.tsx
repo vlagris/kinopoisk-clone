@@ -26,9 +26,7 @@ function Home() {
       <div className={clsx(classes.column, classes.columnContent)}>
 
         <section className={classes.section}>
-          <MovieTicketsSection settings={{
-            desktop: {slidesPerView: 6, slidesPerGroup: 5}
-          }}/>
+          <MovieTicketsSection/>
         </section>
 
         <section className={classes.section}>

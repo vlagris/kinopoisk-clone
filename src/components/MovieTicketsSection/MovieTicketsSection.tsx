@@ -1,6 +1,5 @@
 import {useQuery} from "@tanstack/react-query";
 import {kinopoiskdevApi} from "@/services/api/kinopoiskdevApi";
-import {CarouselSettings} from "@/components/Carousel/Carousel.tsx";
 import {Carousel, CarouselItem} from "@/components/Carousel";
 import {MovieSectionTitle, MovieSectionTitleSkeleton} from "@/components/MovieSectionTitle";
 import {Card, CardSkeleton} from "@/components/Card";
@@ -9,11 +8,10 @@ import {clsx} from "clsx";
 
 
 interface MovieTicketsSectionProps {
-  settings?: CarouselSettings,
   className?: string,
 }
 
-function MovieTicketsSection({settings, className}: MovieTicketsSectionProps) {
+function MovieTicketsSection({className}: MovieTicketsSectionProps) {
   const {data: movies, isSuccess} = useQuery({
     queryKey: ["moviesTickets"],
     queryFn: () => kinopoiskdevApi.getMoviesByFilters({
@@ -24,10 +22,6 @@ function MovieTicketsSection({settings, className}: MovieTicketsSectionProps) {
       ticketsOnSale: ["true"],
     })
   });
-  const defaultSettings: CarouselSettings = {
-    desktop: { spaceBetween: 8, ...settings?.desktop },
-    mobile: { spaceBetween: 8, ...settings?.mobile }
-  }
 
 
   if (!isSuccess) {
@@ -57,9 +51,10 @@ function MovieTicketsSection({settings, className}: MovieTicketsSectionProps) {
         Билеты в кино
       </MovieSectionTitle>
       <Carousel
-        settings={defaultSettings}
         buttonNextClassName={classes.button}
         buttonPrevClassName={classes.button}
+        spaceBetween={8}
+        slidesPerGroupAuto={true}
       >
         {movies?.docs.map((movie) => (
           <CarouselItem key={movie.id}>

@@ -35,15 +35,8 @@ function MovieDesktop({movie, isSuccess}: MovieAdaptiveProps) {
               similarMovies={movie?.similarMovies}
               isSuccess={isSuccess}
             />
-            <MovieTicketsSection
-              className={classes.sectionContainer}
-              settings={{
-                desktop: {
-                  slidesPerView: 4,
-                  breakpoints: { 1280: { slidesPerView: 5 } }
-                }
-              }}
-            />
+            <MovieTicketsSection className={classes.sectionContainer}/>
+
             <MovieFactsDesktop
               title="Знаете ли вы, что…"
               facts={movie?.facts?.filter(item => item.type === "FACT")}

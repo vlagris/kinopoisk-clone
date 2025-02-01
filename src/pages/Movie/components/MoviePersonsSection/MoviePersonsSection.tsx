@@ -16,11 +16,11 @@ export interface MoviePersonsSectionProps {
   title: string,
   persons?: MoviePersonType[],
   rows?: number,
-  subTitle: keyof MoviePersonType,
+  itemSubtitleFieldName: keyof MoviePersonType,
   isSuccess: boolean
 }
 
-function MoviePersonsSection({title, persons, rows = 1, subTitle, isSuccess}: MoviePersonsSectionProps) {
+function MoviePersonsSection({title, persons, rows = 1, itemSubtitleFieldName, isSuccess}: MoviePersonsSectionProps) {
   const chunkedPersons = useMemo(() => {
     return persons?.reduce((result, item, i) => {
       const chunkI = Math.floor(i / rows);
@@ -44,10 +44,7 @@ function MoviePersonsSection({title, persons, rows = 1, subTitle, isSuccess}: Mo
         {title}
       </MovieSectionTitle>
       <Carousel
-        settings={{
-         desktop: { slidesPerView: "auto", spaceBetween: 16 },
-          mobile: { slidesPerView: "auto", spaceBetween: 16 }
-        }}
+        spaceBetween={16}
       >
         {chunkedPersons?.map((chunk, index) => (
           <CarouselItem key={index}>
@@ -56,7 +53,7 @@ function MoviePersonsSection({title, persons, rows = 1, subTitle, isSuccess}: Mo
                 key={rowIndex}
                 image={person.photo || ""}
                 title={person.name || person.enName || ""}
-                subtitle={person[subTitle]}
+                subtitle={person[itemSubtitleFieldName]}
               />
             ))}
           </CarouselItem>

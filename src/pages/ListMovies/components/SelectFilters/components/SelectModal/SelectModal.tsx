@@ -1,4 +1,4 @@
-import React, {useEffect, useLayoutEffect, useRef, useState} from "react";
+import React, {useEffect, useLayoutEffect, useRef, useState, ReactNode} from "react";
 import {Modal, ModalOverlay, ModalPanel, ModalHeader, ModalCloseButton} from "@/components/UI/Modal";
 import {SelectModalContext} from "./SelectModalContext.ts";
 import classes from "./styles.module.scss";
@@ -9,12 +9,12 @@ type SelectItemValue = string | number | undefined | null
 
 export type SelectedItem = {
   value: SelectItemValue;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 interface SelectFiltersSelectModalProps {
   title?: string,
-  children?: React.ReactNode,
+  children?: ReactNode,
   onChange?: (value: SelectItemValue) => void,
 }
 

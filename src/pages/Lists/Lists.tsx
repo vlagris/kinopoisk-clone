@@ -9,7 +9,7 @@ import classes from "@/pages/Lists/styles.module.scss";
 
 
 
-const categoryArray: { [p: string]: ListCategory } = {
+const categoryMap: { [p: string]: ListCategory } = {
   "1": "Фильмы",
   "2": "Онлайн-кинотеатр",
   "3": "Сериалы",
@@ -19,10 +19,10 @@ const categoryArray: { [p: string]: ListCategory } = {
 
 function ListsPage() {
   const { categoryIndex } = useParams();
-  if (!categoryIndex || !categoryArray[categoryIndex]) {
-    throw "Category not found"
+  if (!categoryIndex) {
+    throw new Error("category index is missing");
   }
-  const category = categoryArray[categoryIndex];
+  const category = categoryMap[categoryIndex];
   const lists = useQuery({
     queryKey: ["lists", category],
     queryFn: () => kinopoiskdevApi.getLists({

@@ -45,7 +45,7 @@ function MovieMobile({movie, isSuccess}: MovieAdaptiveProps) {
       <div className={classes.sectionContainer}>
         <MoviePersonsSection
           title="Актеры"
-          subTitle="enName"
+          itemSubtitleFieldName="enName"
           rows={4}
           persons={actors}
           isSuccess={isSuccess}
@@ -54,7 +54,7 @@ function MovieMobile({movie, isSuccess}: MovieAdaptiveProps) {
       <div className={classes.sectionContainer}>
         <MoviePersonsSection
           title="Создатели"
-          subTitle="profession"
+          itemSubtitleFieldName="profession"
           rows={2}
           persons={authors}
           isSuccess={isSuccess}

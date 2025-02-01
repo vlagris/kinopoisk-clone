@@ -16,19 +16,6 @@ interface SimilarMoviesProps {
 }
 
 function SimilarMovies({similarMovies, isSuccess, className}: SimilarMoviesProps) {
-  const settings = {
-    desktop: {
-      slidesPerView: 4,
-      spaceBetween: 8,
-      breakpoints: {
-        1280: { slidesPerView: 5 }
-      },
-    },
-    mobile: {
-      spaceBetween: 8,
-    }
-  }
-
 
   if (!isSuccess) {
     return (
@@ -46,7 +33,6 @@ function SimilarMovies({similarMovies, isSuccess, className}: SimilarMoviesProps
         {isMobile? "Похожие" : "Если вам понравился этот фильм"}
       </MovieSectionTitle>
       <Carousel
-        settings={settings}
         buttonNextClassName={classes.button}
         buttonPrevClassName={classes.button}
       >

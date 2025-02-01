@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 import classes from "./styles.module.scss";
 
 
@@ -11,12 +12,12 @@ interface FooterMenuItemProps {
 function FooterMenuItem({to, children}: FooterMenuItemProps) {
   return (
     <li className={classes.menuItem}>
-      <a
-        href={to}
+      <Link
+        to={to}
         className={classes.menuLink}
       >
         { children }
-      </a>
+      </Link>
     </li>
   );
 }
