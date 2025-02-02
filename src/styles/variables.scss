@@ -1,3 +1,5 @@
+@use "mixins/media";
+
 :root {
   --container: 1024px;
   --containerSmall: 1024px;
@@ -44,7 +46,7 @@
 }
 
 
-@include min-2lg {
+@include media.min-2lg {
   :root {
   --container: 1280px;
   }
