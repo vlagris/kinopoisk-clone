@@ -5,6 +5,8 @@ import { Swiper, SwiperProps } from 'swiper/react';
 import {clsx} from "clsx";
 import 'swiper/scss';
 import 'swiper/scss/grid';
+import 'swiper/scss/scss/navigation';
+import 'swiper/scss/free-mode';
 import classes from "./styles.module.scss";
 import ArrowRightIcon from "@/assets/icons/arrow-right.svg?react";
 
