@@ -8,8 +8,8 @@ import classes from "./styles.module.scss";
 const items = [
   { to: "https://yandex.ru/jobs/vacancies?services=kinopoisk", value: "Вакансии" },
   { to: "https://ya.ru/funtech-sales/portal", value: "Реклама" },
-  { to: "/lists/movies/?b=films", value: "Все фильмы" },
-  { to: "/lists/movies/?b=series", value: "Все сериалы" },
+  { to: "/lists/movies/?b=movie", value: "Все фильмы" },
+  { to: "/lists/movies/?b=tv-series", value: "Все сериалы" },
   // { to: "/lists/movies/genre--animation/?ss_subscription=ANY", value: "Все мультфильмы" },
   // { to: "/lists/movies/genre--reality-tv/?b=series", value: "Передачи и шоу" },
 ]

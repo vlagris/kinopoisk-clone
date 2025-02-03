@@ -1,14 +1,16 @@
 import {useEffect, useRef, useState, ReactNode} from 'react';
 import {DropdownContext} from "@/components/UI/Dropdown/DropdownContext.ts";
 import classes from "@/components/UI/Dropdown/styles.module.scss";
+import {clsx} from "clsx";
 
 
 
 interface DropdownProps {
   children?: ReactNode,
+  className?: string
 }
 
-function Dropdown({ children }: DropdownProps) {
+function Dropdown({ children, className }: DropdownProps) {
   const [show, setShow] = useState(false);
   const [toggle, seToggle] = useState<HTMLButtonElement | null>(null);
   const ref = useRef<HTMLDivElement>(null);
@@ -29,7 +31,7 @@ function Dropdown({ children }: DropdownProps) {
 
   return (
     <DropdownContext.Provider value={{ show, setShow, toggle, seToggle}}>
-      <div ref={ref} className={classes.dropdown}>
+      <div ref={ref} className={clsx(classes.dropdown, className)}>
         {children}
       </div>
     </DropdownContext.Provider>

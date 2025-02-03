@@ -1,3 +1,5 @@
+import {clsx} from "clsx";
+import {isMobile} from "react-device-detect";
 import {Select, SelectButton, SelectItem, SelectMenu} from "@/components/UI/Select";
 import {useCustomSearchParams} from "@/hooks/useCustomSearchParams.ts";
 import classes from "./styles.module.scss";
@@ -17,7 +19,10 @@ function Sorting() {
 
 
   return (
-    <Select onChange={(value) => updateSearchParam("sort", value)}>
+    <Select
+      className={clsx(isMobile && classes.resetPosition)}
+      onChange={(value) => updateSearchParam("sort", value)}
+    >
       <SelectButton className={classes.button}/>
 
       <SelectMenu>

@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import {useEffect, useRef, useState, ReactNode} from 'react';
 import {Dropdown} from "@/components/UI/Dropdown";
 import {SelectContext} from "@/components/UI/Select/SelectContext.ts";
 
@@ -6,16 +6,17 @@ import {SelectContext} from "@/components/UI/Select/SelectContext.ts";
 
 export type SelectedItem = {
   value: any;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 interface SelectProps {
-  children?: React.ReactNode,
+  children?: ReactNode,
+  className?: string,
   onChange?: (value: string) => void,
   placeholder?: string;
 }
 
-function Select({children, onChange = () => {}, placeholder = ""}: SelectProps) {
+function Select({children, className, onChange = () => {}, placeholder = ""}: SelectProps) {
   const [selectedItem, setSelectedItem] = useState<SelectedItem>({
     value: "",
     children: placeholder
@@ -33,7 +34,7 @@ function Select({children, onChange = () => {}, placeholder = ""}: SelectProps) 
 
   return (
     <SelectContext.Provider value={{selectedItem, setSelectedItem}}>
-      <Dropdown>
+      <Dropdown className={className}>
         {children}
       </Dropdown>
     </SelectContext.Provider>

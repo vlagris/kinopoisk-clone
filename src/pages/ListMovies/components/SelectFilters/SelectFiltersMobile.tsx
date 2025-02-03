@@ -36,35 +36,33 @@ function SelectFiltersMobile({countries, genres}: SelectFiltersProps) {
             </ModalHeader>
 
 
-            <div>
-              <SelectModal
-                title="Страны"
-                onChange={(value) => updateSearchParam("country", value)}
-              >
-                <SelectModalItem active={!country}>
-                  Все страны
+            <SelectModal
+              title="Страны"
+              onChange={(value) => updateSearchParam("country", value)}
+            >
+              <SelectModalItem active={!country}>
+                Все страны
+              </SelectModalItem>
+              {countries.data?.map(({name, slug}) => (
+                <SelectModalItem key={slug} value={slug} active={country === slug}>
+                  {name}
                 </SelectModalItem>
-                {countries.data?.map(({name, slug}) => (
-                  <SelectModalItem key={slug} value={slug} active={country === slug}>
-                    {name}
-                  </SelectModalItem>
-                ))}
-              </SelectModal>
+              ))}
+            </SelectModal>
 
-              <SelectModal
-                title="Жанры"
-                onChange={(value) => updateSearchParam("genre", value)}
-              >
-                <SelectModalItem active={!genre}>
-                  Все жанры
+            <SelectModal
+              title="Жанры"
+              onChange={(value) => updateSearchParam("genre", value)}
+            >
+              <SelectModalItem active={!genre}>
+                Все жанры
+              </SelectModalItem>
+              {genres.data?.map(({name, slug}) => (
+                <SelectModalItem key={slug} value={slug} active={genre === slug}>
+                  {name}
                 </SelectModalItem>
-                {genres.data?.map(({name, slug}) => (
-                  <SelectModalItem key={slug} value={slug} active={genre === slug}>
-                    {name}
-                  </SelectModalItem>
-                ))}
-              </SelectModal>
-            </div>
+              ))}
+            </SelectModal>
 
           </ModalPanel>
         </ModalOverlay>
