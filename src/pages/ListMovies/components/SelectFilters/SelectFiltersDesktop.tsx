@@ -1,6 +1,6 @@
 import {useCustomSearchParams} from "@/hooks/useCustomSearchParams.ts";
 import {Select, SelectButton, SelectItem, SelectMenu} from "@/components/UI/Select";
-import {Collapse} from "../Collapse";
+import {Collapse} from "@/components/UI/Collapse";
 import {SelectFiltersProps} from "@/pages/ListMovies/components/SelectFilters/SelectFilters.tsx";
 import classes from "./styles.desktop.module.scss";
 
