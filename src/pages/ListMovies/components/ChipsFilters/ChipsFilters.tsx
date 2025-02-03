@@ -2,7 +2,7 @@ import {useMemo} from "react";
 import {createSearchParams, useSearchParams} from "react-router-dom";
 import {clsx} from "clsx";
 import {isDesktop} from "react-device-detect";
-import ToggleFiltersItem, {ToggleFiltersItemProps} from "@/pages/ListMovies/components/ToggleFilters/components/ToggleFiltersItem.tsx";
+import ChipsFiltersItem, {ToggleFiltersItemProps} from "@/pages/ListMovies/components/ToggleFilters/components/ChipsFiltersItem.tsx";
 import {ListCategory} from "@/types";
 import classes from "@/pages/ListMovies/components/ToggleFilters/styles.module.scss";
 
@@ -27,7 +27,7 @@ export interface ToggleFiltersProps {
   category?: ListCategory
 }
 
-function ToggleFilters({category}: ToggleFiltersProps) {
+function ChipsFilters({category}: ToggleFiltersProps) {
   const [searchParams] = useSearchParams();
   const paramName = "b";
   const param = searchParams.get(paramName);
@@ -59,7 +59,7 @@ function ToggleFilters({category}: ToggleFiltersProps) {
   return (
     <div className={clsx(classes.root, isDesktop && classes.rootDesktop)}>
       {itemsProps.map((props) => (
-        <ToggleFiltersItem
+        <ChipsFiltersItem
           key={props.to}
           {...props}
         />
@@ -68,4 +68,4 @@ function ToggleFilters({category}: ToggleFiltersProps) {
   );
 }
 
-export default ToggleFilters;
+export default ChipsFilters;

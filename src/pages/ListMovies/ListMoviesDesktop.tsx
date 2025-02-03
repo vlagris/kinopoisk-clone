@@ -1,7 +1,7 @@
 import {ListMoviesViewProps} from "@/pages/ListMovies/ListMovies.tsx";
 import {ListMoviesHeader} from "@/pages/ListMovies/components/ListMoviesHeader";
 import {ListMoviesInfo} from "@/pages/ListMovies/components/ListMoviesInfo";
-import {ToggleFilters} from "./components/ToggleFilters";
+import {ChipsFilters} from "./components/ChipsFilters";
 import {SelectFiltersDesktop} from "@/pages/ListMovies/components/SelectFilters";
 import {ListMoviesListsFilters, ListMoviesListsFiltersItem} from "@/pages/ListMovies/components/ListMoviesListsFilters";
 import {ListMoviesList} from "@/pages/ListMovies/components/ListMoviesList";
@@ -20,7 +20,7 @@ function ListMoviesDesktop({ listInfo, movies, countriesSelect, genresSelect }: 
 
       <div className={classes.sidebar}>
         <div className={classes.sidebarFilters}>
-          <ToggleFilters category={listInfo.data?.category}/>
+          <ChipsFilters category={listInfo.data?.category}/>
           <SelectFiltersDesktop
             countries={countriesSelect}
             genres={genresSelect}

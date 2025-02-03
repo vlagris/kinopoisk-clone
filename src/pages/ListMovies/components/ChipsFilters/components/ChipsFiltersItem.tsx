@@ -11,7 +11,7 @@ export interface ToggleFiltersItemProps {
   disabled?: boolean
 }
 
-function ToggleFiltersItem({ value, to, active, disabled }: ToggleFiltersItemProps) {
+function ChipsFiltersItem({ value, to, active, disabled }: ToggleFiltersItemProps) {
   return (
     <Link
       to={to}
@@ -22,4 +22,4 @@ function ToggleFiltersItem({ value, to, active, disabled }: ToggleFiltersItemPro
 );
 }
 
-export default ToggleFiltersItem;
+export default ChipsFiltersItem;

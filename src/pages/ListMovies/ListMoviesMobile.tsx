@@ -3,7 +3,7 @@ import {ListMoviesHeader} from "@/pages/ListMovies/components/ListMoviesHeader";
 import {ListMoviesInfo} from "@/pages/ListMovies/components/ListMoviesInfo";
 import {Sorting} from "@/pages/ListMovies/components/Sorting";
 import {SelectFiltersMobile} from "@/pages/ListMovies/components/SelectFilters";
-import {ToggleFilters} from "@/pages/ListMovies/components/ToggleFilters";
+import {ChipsFilters} from "@/pages/ListMovies/components/ChipsFilters";
 import {ListMoviesListsFilters, ListMoviesListsFiltersItem} from "@/pages/ListMovies/components/ListMoviesListsFilters";
 import {ListMoviesPagination} from "@/pages/ListMovies/components/ListMoviesPagination";
 import {ListMoviesList} from "@/pages/ListMovies/components/ListMoviesList";
@@ -28,7 +28,7 @@ function ListMoviesMobile({ listInfo, movies, countriesSelect, genresSelect }: L
           <div className={classes.topBarItemWrap}>
             <Sorting/>
           </div>
-          <ToggleFilters category={listInfo.data?.category}/>
+          <ChipsFilters category={listInfo.data?.category}/>
         </div>
       </div>
 
