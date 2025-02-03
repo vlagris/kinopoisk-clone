@@ -1,22 +1,24 @@
-import React, {useEffect} from "react";
+import {useEffect, ReactNode} from "react";
 import {clsx} from "clsx";
-import {Portal} from "@/components/UI/Portal";
-import classes from "@/components/UI/Modal/styles.module.scss";
-import {ModalContext} from "@/components/UI/Modal/ModalContext.ts";
 import {useLocation} from "react-router-dom";
+import {ModalContext} from "@/components/UI/Modal/ModalContext.ts";
+import {Portal} from "@/components/UI/Portal";
+import {ModalOverlay, OverlayType} from "@/components/UI/Modal/components/ModalOverlay";
+import classes from "@/components/UI/Modal/styles.module.scss";
 
 
 
 
 interface ModalProps {
-  children?: React.ReactNode,
+  children?: ReactNode,
   show: boolean,
   onHide: () => void,
   className?: string,
   closeOnRedirect?: boolean
+  overlay?: OverlayType
 }
 
-function Modal({ children, show, onHide, className, closeOnRedirect = true }: ModalProps) {
+function Modal({children, show, onHide, className, closeOnRedirect = true, overlay}: ModalProps) {
   const location = useLocation();
 
 
@@ -33,7 +35,9 @@ function Modal({ children, show, onHide, className, closeOnRedirect = true }: Mo
         <Portal>
           <ModalContext.Provider value={{show, onClose: onHide}}>
             <div className={clsx(classes.modal, className)}>
-              {children}
+              <ModalOverlay overlay={overlay}>
+                {children}
+              </ModalOverlay>
             </div>
           </ModalContext.Provider>
         </Portal>

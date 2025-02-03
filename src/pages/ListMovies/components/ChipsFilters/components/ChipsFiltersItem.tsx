@@ -4,14 +4,14 @@ import classes from "../styles.module.scss";
 
 
 
-export interface ToggleFiltersItemProps {
+interface ChipsFiltersItemProps {
   value?: string,
   to: string,
   active?: boolean,
   disabled?: boolean
 }
 
-function ChipsFiltersItem({ value, to, active, disabled }: ToggleFiltersItemProps) {
+function ChipsFiltersItem({ value, to, active, disabled }: ChipsFiltersItemProps) {
   return (
     <Link
       to={to}

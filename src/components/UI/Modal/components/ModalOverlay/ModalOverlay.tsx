@@ -1,25 +1,37 @@
-import React, {useContext} from "react";
+import {useContext, ReactNode, MouseEvent} from "react";
+import {clsx} from "clsx";
 import {ModalContext} from "@/components/UI/Modal/ModalContext.ts";
 import classes from "../../styles.module.scss";
 
 
+export type OverlayType = "default" | "none" | "transparent"
+
 interface ModalOverlayProps {
-  children?: React.ReactNode
+  children?: ReactNode,
+  overlay?: OverlayType
 }
 
-function ModalOverlay({children}: ModalOverlayProps) {
+function ModalOverlay({children, overlay}: ModalOverlayProps) {
   const {onClose} = useContext(ModalContext);
 
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+  function handleClick(event: MouseEvent<HTMLElement>){
     if (event.target === event.currentTarget) {
       onClose()
     }
   }
 
 
+  if (overlay === "none") {
+    return children;
+  }
+
+
   return (
-    <div className={classes.overlay} onClick={handleClick}>
+    <div
+      className={clsx(classes.overlay, overlay === "transparent" && classes.overlayTransparent)}
+      onClick={handleClick}
+    >
       {children}
     </div>
   );

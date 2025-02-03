@@ -1,5 +1,5 @@
 import React, {useEffect, useLayoutEffect, useRef, useState, ReactNode} from "react";
-import {Modal, ModalOverlay, ModalPanel, ModalHeader, ModalCloseButton} from "@/components/UI/Modal";
+import {Modal, ModalPanel, ModalHeader, ModalCloseButton, OverlayType} from "@/components/UI/Modal";
 import {SelectModalContext} from "./SelectModalContext.ts";
 import classes from "./styles.module.scss";
 
@@ -16,9 +16,10 @@ interface SelectFiltersSelectModalProps {
   title?: string,
   children?: ReactNode,
   onChange?: (value: SelectItemValue) => void,
+  overlay?: OverlayType
 }
 
-function SelectModal({title, children, onChange = () => {}}: SelectFiltersSelectModalProps) {
+function SelectModal({title, children, onChange = () => {}, overlay}: SelectFiltersSelectModalProps) {
   const [show, setShow] = useState(false);
   const [selectedItem, setSelectedItem] = useState<SelectedItem>({
     value: "",
@@ -63,20 +64,22 @@ function SelectModal({title, children, onChange = () => {}}: SelectFiltersSelect
         </span>
       </button>
 
-      <Modal show={show} onHide={handleClose}>
-        <ModalOverlay>
-          <ModalPanel variant="bottom">
-            <ModalHeader>
-              <h2 className={classes.modalTitle}>
-                {title}
-              </h2>
-              <ModalCloseButton/>
-            </ModalHeader>
-            <div className={classes.list}>
-              {children}
-            </div>
-          </ModalPanel>
-        </ModalOverlay>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        overlay={overlay}
+      >
+        <ModalPanel variant="bottom">
+          <ModalHeader>
+            <h2 className={classes.modalTitle}>
+              {title}
+            </h2>
+            <ModalCloseButton/>
+          </ModalHeader>
+          <div className={classes.list}>
+            {children}
+          </div>
+        </ModalPanel>
       </Modal>
     </SelectModalContext.Provider>
   );

@@ -27,7 +27,11 @@ function BurgerMenuMobile() {
           }
         </button>
 
-        <Modal show={show} onHide={() => setShow(false)}>
+        <Modal
+          show={show}
+          onHide={() => setShow(false)}
+          overlay="none"
+        >
           <MobileView renderWithFragment>
             <div className={clsx(classes.menuModal, show && classes.menu_active)}>
               <div className={classes.menuModalInner}>

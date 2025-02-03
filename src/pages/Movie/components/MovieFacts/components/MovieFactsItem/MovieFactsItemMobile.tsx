@@ -2,7 +2,7 @@ import {useState} from "react";
 import {clsx} from "clsx";
 import {MoviePosterType} from "@/types";
 import {MovieFactsItemCommonProps} from "@/pages/Movie/components/MovieFacts/components/MovieFactsItem/MovieFactsItem.tsx";
-import {Modal, ModalOverlay, ModalPanel, ModalHeader, ModalCloseButton} from "@/components/UI/Modal";
+import {Modal, ModalPanel, ModalHeader, ModalCloseButton} from "@/components/UI/Modal";
 import classes from "./styles.mobile.module.scss";
 import PlaceholderImage from "@/assets/icons/placeholder.svg";
 
@@ -51,32 +51,32 @@ function MovieFactsItemMobile({fact, poster, name}: MovieFactsItemMobileProps) {
     </div>
 
       <Modal show={show} onHide={handleCloseModal}>
-        <ModalOverlay>
-          <ModalPanel variant="bottom">
-            <ModalHeader>
-              <div className={classes.modalInfo}>
-                <img 
-                  className={classes.poster}
-                  src={poster?.previewUrl || PlaceholderImage} 
-                  alt={name || ""}
-                />
-                <div className={classes.titleContainer}>
-                  <div className={classes.modalTitle}>
-                    Интересный факт
-                  </div>
-                  <div className={classes.subtitle}>
-                    {name}
-                  </div>
+
+        <ModalPanel variant="bottom">
+          <ModalHeader>
+            <div className={classes.modalInfo}>
+              <img
+                className={classes.poster}
+                src={poster?.previewUrl || PlaceholderImage}
+                alt={name || ""}
+              />
+              <div className={classes.titleContainer}>
+                <div className={classes.modalTitle}>
+                  Интересный факт
+                </div>
+                <div className={classes.subtitle}>
+                  {name}
                 </div>
               </div>
-              <ModalCloseButton/>
-            </ModalHeader>
-            <div
-              className={classes.modalText}
-              dangerouslySetInnerHTML={{__html: fact.value}}
-            />
-          </ModalPanel>
-        </ModalOverlay>
+            </div>
+            <ModalCloseButton/>
+          </ModalHeader>
+
+          <div
+            className={classes.modalText}
+            dangerouslySetInnerHTML={{__html: fact.value}}
+          />
+        </ModalPanel>
       </Modal>
     </>
   );

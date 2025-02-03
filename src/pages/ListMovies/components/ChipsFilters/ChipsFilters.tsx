@@ -2,20 +2,20 @@ import {useMemo} from "react";
 import {createSearchParams, useSearchParams} from "react-router-dom";
 import {clsx} from "clsx";
 import {isDesktop} from "react-device-detect";
-import ChipsFiltersItem, {ToggleFiltersItemProps} from "@/pages/ListMovies/components/ToggleFilters/components/ChipsFiltersItem.tsx";
+import ChipsFiltersItem from "@/pages/ListMovies/components/ChipsFilters/components/ChipsFiltersItem.tsx";
 import {ListCategory} from "@/types";
-import classes from "@/pages/ListMovies/components/ToggleFilters/styles.module.scss";
+import classes from "@/pages/ListMovies/components/ChipsFilters/styles.module.scss";
 
 
 
-type ToggleFiltersItemInitial = {
+type ChipsFiltersItemInitial = {
   value: string,
   paramValue: string,
   oppositeParam: string,
   oppositeCategory?: ListCategory
 }
 
-const items: ToggleFiltersItemInitial[] = [
+const items: ChipsFiltersItemInitial[] = [
   { value: "Фильмы", paramValue: "movie", oppositeParam: "tv-series", oppositeCategory: "Сериалы" },
   { value: "Сериалы", paramValue: "tv-series", oppositeParam: "movie", oppositeCategory: "Фильмы" },
   { value: "Российские", paramValue: "russian", oppositeParam: "foreign" },
@@ -23,17 +23,17 @@ const items: ToggleFiltersItemInitial[] = [
 ]
 
 
-export interface ToggleFiltersProps {
+export interface ChipsFiltersProps {
   category?: ListCategory
 }
 
-function ChipsFilters({category}: ToggleFiltersProps) {
+function ChipsFilters({category}: ChipsFiltersProps) {
   const [searchParams] = useSearchParams();
   const paramName = "b";
   const param = searchParams.get(paramName);
 
 
-  const itemsProps: ToggleFiltersItemProps[] = useMemo(() => {
+  const itemsProps = useMemo(() => {
     return items.map(({value, paramValue, oppositeParam, oppositeCategory}) => {
       const newSearchParams = createSearchParams(searchParams);
       const isActive = searchParams.has(paramName, paramValue);

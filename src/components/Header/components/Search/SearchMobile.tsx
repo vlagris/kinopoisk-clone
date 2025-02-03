@@ -2,7 +2,7 @@ import {useState} from 'react';
 import {MobileView} from "react-device-detect";
 import {clsx} from "clsx";
 import {SearchViewProps} from "@/components/Header/components/Search/Search.tsx";
-import {Modal, ModalOverlay} from "@/components/UI/Modal";
+import {Modal} from "@/components/UI/Modal";
 import {Suggest} from "@/components/Header/components/Search/components/Suggest";
 import {SearchFormMobile} from "@/components/Header/components/Search/components/SearchForm";
 import classes from "@/components/Header/components/Search/styles.module.scss";
@@ -25,16 +25,14 @@ function SearchMobile({searchQuery, setSearchQuery, moviesResult}: SearchViewPro
       </button>
 
       <Modal show={show} onHide={handleClose}>
-        <ModalOverlay>
-          <div className={classes.searchModal}>
-            <SearchFormMobile
-              onClose={handleClose}
-              searchQuery={searchQuery}
-              setSearchQuery={setSearchQuery}
-            />
-            <Suggest moviesResult={moviesResult}/>
-          </div>
-        </ModalOverlay>
+        <div className={classes.searchModal}>
+          <SearchFormMobile
+            onClose={handleClose}
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+          />
+          <Suggest moviesResult={moviesResult}/>
+        </div>
       </Modal>
     </MobileView>
   );

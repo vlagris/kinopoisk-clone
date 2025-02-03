@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {useCustomSearchParams} from "@/hooks/useCustomSearchParams.ts";
 import {SelectFiltersProps} from "@/pages/ListMovies/components/SelectFilters/SelectFilters.tsx";
-import {Modal, ModalOverlay, ModalPanel, ModalHeader, ModalCloseButton} from "@/components/UI/Modal";
+import {Modal, ModalPanel, ModalHeader, ModalCloseButton} from "@/components/UI/Modal";
 import {SelectModal,  SelectModalItem} from "@/pages/ListMovies/components/SelectFilters/components/SelectModal";
 import classes from "./styles.mobile.module.scss";
 import FilterIcon from "@/assets/icons/filter.svg?react";
@@ -25,47 +25,50 @@ function SelectFiltersMobile({countries, genres}: SelectFiltersProps) {
         <FilterIcon className={classes.buttonIcon}/>
       </button>
 
-      <Modal show={show} onHide={handleClose}  closeOnRedirect={false}>
-        <ModalOverlay>
-          <ModalPanel variant="bottom">
-            <ModalHeader>
-              <h2 className={classes.modalTitle}>
-                Фильтры
-              </h2>
-              <ModalCloseButton/>
-            </ModalHeader>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        closeOnRedirect={false}
+      >
+        <ModalPanel variant="bottom">
+          <ModalHeader>
+            <h2 className={classes.modalTitle}>
+              Фильтры
+            </h2>
+            <ModalCloseButton/>
+          </ModalHeader>
 
 
-            <SelectModal
-              title="Страны"
-              onChange={(value) => updateSearchParam("country", value)}
-            >
-              <SelectModalItem active={!country}>
-                Все страны
+          <SelectModal
+            title="Страны"
+            onChange={(value) => updateSearchParam("country", value)}
+            overlay="transparent"
+          >
+            <SelectModalItem active={!country}>
+              Все страны
+            </SelectModalItem>
+            {countries.data?.map(({name, slug}) => (
+              <SelectModalItem key={slug} value={slug} active={country === slug}>
+                {name}
               </SelectModalItem>
-              {countries.data?.map(({name, slug}) => (
-                <SelectModalItem key={slug} value={slug} active={country === slug}>
-                  {name}
-                </SelectModalItem>
-              ))}
-            </SelectModal>
+            ))}
+          </SelectModal>
 
-            <SelectModal
-              title="Жанры"
-              onChange={(value) => updateSearchParam("genre", value)}
-            >
-              <SelectModalItem active={!genre}>
-                Все жанры
+          <SelectModal
+            title="Жанры"
+            onChange={(value) => updateSearchParam("genre", value)}
+          >
+            <SelectModalItem active={!genre}>
+              Все жанры
+            </SelectModalItem>
+            {genres.data?.map(({name, slug}) => (
+              <SelectModalItem key={slug} value={slug} active={genre === slug}>
+                {name}
               </SelectModalItem>
-              {genres.data?.map(({name, slug}) => (
-                <SelectModalItem key={slug} value={slug} active={genre === slug}>
-                  {name}
-                </SelectModalItem>
-              ))}
-            </SelectModal>
+            ))}
+          </SelectModal>
 
-          </ModalPanel>
-        </ModalOverlay>
+        </ModalPanel>
       </Modal>
     </>
   );
