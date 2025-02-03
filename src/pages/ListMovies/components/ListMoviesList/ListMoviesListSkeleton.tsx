@@ -1,5 +1,5 @@
 import {ListMoviesListItemSkeleton} from "@/pages/ListMovies/components/ListMoviesList/components/ListMoviesListItem";
-import classes from "../../styles.desktop.module.scss";
+import classes from "./styles.desktop.module.scss";
 
 
 function ListMoviesListSkeleton() {

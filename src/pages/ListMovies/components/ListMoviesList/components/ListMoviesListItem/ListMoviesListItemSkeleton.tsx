@@ -1,7 +1,7 @@
 import {clsx} from "clsx";
 import {isMobile} from "react-device-detect";
 import Skeleton from "@/components/Skeleton";
-import classes from "../../styles.module.scss";
+import classes from "./styles.module.scss";
 
 
 function ListMoviesListItemSkeleton() {

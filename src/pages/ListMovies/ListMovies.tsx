@@ -3,8 +3,8 @@ import {BrowserView, MobileView} from "react-device-detect";
 import {useParams, useSearchParams} from "react-router-dom";
 import {useQuery, useMutation, UseQueryResult, UseMutationResult} from '@tanstack/react-query'
 import {ListType, Movies, MovieType, PossibleValueByField} from "@/types";
+import {MovieSortField, MovieTypeField, SortType} from "@/services/api/kinopoiskdevApi/types";
 import {kinopoiskdevApi} from "@/services/api/kinopoiskdevApi";
-import {MovieSortField, SortType} from "@/services/api/kinopoiskdevApi/types";
 
 const ListMoviesDesktopLazy = React.lazy(() => import("./ListMoviesDesktop.tsx"))
 const ListMoviesMobileLazy = React.lazy(() => import("./ListMoviesMobile.tsx"))
@@ -24,15 +24,20 @@ function sortMoviesByTop(item1: MovieType, item2: MovieType) {
 }
 
 
-const getMovieType = (values: string[]) => {
-  const result = values.find(item => item === "films" || item === "series");
-  if (result === "films") {
-    return "movie"
+const getTypeFromToggleFilters = (values: string[]) => {
+  return (values as MovieTypeField[]).find(item => item === "movie" || item === "tv-series");
+}
+
+const getCountryFromToggleFilters  = (values: string[]) => {
+  if (values.includes("russian")) {
+    return "Россия";
   }
-  if (result === "series") {
-    return "tv-series"
+  if (values.includes("foreign")) {
+    return "!Россия";
   }
 }
+
+
 
 
 const sortFieldMap: {[key: string]: MovieSortField} = {
@@ -52,13 +57,12 @@ export interface ListMoviesViewProps {
 function ListMovies() {
   const { listSlug } = useParams();
   const [searchParams] = useSearchParams();
-  const page = searchParams.get('page');
+  const page = searchParams.get('page') || undefined;
   const country = searchParams.get('country');
   const genre = searchParams.get('genre');
   const sort = searchParams.get('sort') || "";
-  const isRussian = searchParams.has('b', "russian");
-  const isForeign = searchParams.has('b', "foreign");
-  const isTop = listSlug?.includes("top");
+  const toggleFilters = searchParams.getAll('b');
+  const isTop = !!listSlug?.includes("top");
 
 
   const listInfo = useMutation({
@@ -77,35 +81,32 @@ function ListMovies() {
 
   const countryName = countriesSelect?.data?.find(({slug}) => slug === country)?.name;
   const genreName = genresSelect?.data?.find(({slug}) => slug === genre)?.name;
-
-
-  let limit = 50;
   const sortField: MovieSortField[] = [];
   const sortType: SortType[] = [];
-  const type = getMovieType(searchParams.getAll("b"));
-  const countries = [countryName, isRussian && "Россия", isForeign && "!Россия"].filter(Boolean) as string[];
+  const type = getTypeFromToggleFilters(toggleFilters);
+  const countries = [countryName, getCountryFromToggleFilters(toggleFilters)].filter(Boolean) as string[];
 
 
   if (sort) {
     sortField.push(sortFieldMap[sort]);
     sortType.push("-1");
   }
-  if (isTop) {
+  else if (isTop) {
     sortField.push("rating.kp", "top250");
     sortType.push("-1", "-1");
   }
 
 
   const movies = useQuery({
-    queryKey: ["movies", page, limit, listSlug, sortField, sortType, genreName, countries, type],
+    queryKey: ["movies", page, listSlug, sortField, sortType, genreName, countries, type],
     queryFn: () => kinopoiskdevApi.getMoviesByFilters({
-      limit: limit,
-      page: Number(page) || undefined,
+      limit: 50,
+      page: page,
       lists: listSlug,
       sortField: sortField,
       sortType: sortType,
       type: type,
-      "countries.name": countries.length ? countries : undefined,
+      "countries.name": countries,
       "genres.name": genreName,
     }),
     select: (data) => {

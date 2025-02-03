@@ -38,7 +38,7 @@ function ListMoviesListItemDesktop({movie}: ListMoviesListItemProps) {
                 {alternativeName}
               </span>
             }
-            <span className={classes.subtitleText}>
+            <span className={clsx(classes.subtitleText, classes.truncatedText)}>
               {alternativeName && ", "}
               {[movie.year, duration].filter(Boolean).join(", ") }
             </span>

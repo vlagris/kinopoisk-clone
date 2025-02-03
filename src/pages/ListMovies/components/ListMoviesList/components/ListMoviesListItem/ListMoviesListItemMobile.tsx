@@ -1,7 +1,6 @@
 import {Link} from "react-router-dom";
 import {clsx} from "clsx";
 import {ListMoviesListItemProps} from "./ListMoviesListItem.tsx";
-import {convertMinutesToHours} from "@/utils/convertMinutesToHours.ts";
 import {PATH_LINK} from "@/constants";
 import classes from "./styles.module.scss";
 import PlaceholderImage from "@/assets/icons/placeholder.svg";
@@ -38,9 +37,7 @@ function ListMoviesListItemMobile({movie}: ListMoviesListItemProps) {
               </span>
             }
             <span className={classes.subtitleText}>
-              {movie.alternativeName && ", "}
-              {movie.year && movie.year + ", "}
-              {movie.movieLength && convertMinutesToHours(movie.movieLength)}
+              {movie.alternativeName && movie.year && ", " + movie.year}
             </span>
           </div>
 

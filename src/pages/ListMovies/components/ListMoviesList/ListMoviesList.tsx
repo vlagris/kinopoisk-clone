@@ -1,7 +1,7 @@
 import React from "react";
 import {BrowserView, MobileView} from "react-device-detect";
 import {MovieType} from "@/types";
-import {ListMoviesListSkeleton} from "@/pages/ListMovies/components/ListMoviesList/components/ListMoviesListSkeleton";
+import ListMoviesListSkeleton from "./ListMoviesListSkeleton";
 
 
 const ListMoviesListDesktopLazy = React.lazy(() => import("./ListMoviesListDesktop.tsx"))
