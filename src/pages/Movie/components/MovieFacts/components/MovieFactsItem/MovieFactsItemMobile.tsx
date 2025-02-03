@@ -2,7 +2,7 @@ import {useState} from "react";
 import {clsx} from "clsx";
 import {MoviePosterType} from "@/types";
 import {MovieFactsItemCommonProps} from "@/pages/Movie/components/MovieFacts/components/MovieFactsItem/MovieFactsItem.tsx";
-import {Modal, ModalPanel, ModalHeader, ModalCloseButton} from "@/components/UI/Modal";
+import {Modal, ModalPanel, ModalHeader} from "@/components/UI/Modal";
 import classes from "./styles.mobile.module.scss";
 import PlaceholderImage from "@/assets/icons/placeholder.svg";
 
@@ -69,7 +69,6 @@ function MovieFactsItemMobile({fact, poster, name}: MovieFactsItemMobileProps) {
                 </div>
               </div>
             </div>
-            <ModalCloseButton/>
           </ModalHeader>
 
           <div

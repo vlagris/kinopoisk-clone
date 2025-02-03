@@ -1,5 +1,5 @@
 import React, {useEffect, useLayoutEffect, useRef, useState, ReactNode} from "react";
-import {Modal, ModalPanel, ModalHeader, ModalCloseButton, OverlayType} from "@/components/UI/Modal";
+import {Modal, ModalPanel, ModalHeader, OverlayType} from "@/components/UI/Modal";
 import {SelectModalContext} from "./SelectModalContext.ts";
 import classes from "./styles.module.scss";
 
@@ -74,7 +74,6 @@ function SelectModal({title, children, onChange = () => {}, overlay}: SelectFilt
             <h2 className={classes.modalTitle}>
               {title}
             </h2>
-            <ModalCloseButton/>
           </ModalHeader>
           <div className={classes.list}>
             {children}

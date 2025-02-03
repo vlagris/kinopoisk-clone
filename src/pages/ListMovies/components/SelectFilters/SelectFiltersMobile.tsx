@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {useCustomSearchParams} from "@/hooks/useCustomSearchParams.ts";
 import {SelectFiltersProps} from "@/pages/ListMovies/components/SelectFilters/SelectFilters.tsx";
-import {Modal, ModalPanel, ModalHeader, ModalCloseButton} from "@/components/UI/Modal";
+import {Modal, ModalPanel, ModalHeader} from "@/components/UI/Modal";
 import {SelectModal,  SelectModalItem} from "@/pages/ListMovies/components/SelectFilters/components/SelectModal";
 import classes from "./styles.mobile.module.scss";
 import FilterIcon from "@/assets/icons/filter.svg?react";
@@ -35,7 +35,6 @@ function SelectFiltersMobile({countries, genres}: SelectFiltersProps) {
             <h2 className={classes.modalTitle}>
               Фильтры
             </h2>
-            <ModalCloseButton/>
           </ModalHeader>
 
 
@@ -47,11 +46,13 @@ function SelectFiltersMobile({countries, genres}: SelectFiltersProps) {
             <SelectModalItem active={!country}>
               Все страны
             </SelectModalItem>
+
             {countries.data?.map(({name, slug}) => (
               <SelectModalItem key={slug} value={slug} active={country === slug}>
                 {name}
               </SelectModalItem>
             ))}
+
           </SelectModal>
 
           <SelectModal

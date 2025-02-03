@@ -10,7 +10,7 @@ interface ListMoviesItemPosterProps {
   poster?: MoviePosterType,
   rating?: MovieRatingType,
   href: string,
-  alt?: string,
+  alt?: string | null,
 }
 
 function ListMoviesItemPoster({ poster, href, alt, rating }: ListMoviesItemPosterProps) {
@@ -22,7 +22,7 @@ function ListMoviesItemPoster({ poster, href, alt, rating }: ListMoviesItemPoste
         loading="lazy"
         className={classes.image}
       />
-      {isMobile && !!rating.kp &&
+      {isMobile && !!rating?.kp &&
         <div className={clsx(classes.rating, rating.kp < 7 && classes.ratingGray)}>
           {rating.kp.toFixed(1)}
         </div>
