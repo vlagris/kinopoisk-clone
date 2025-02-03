@@ -3,8 +3,8 @@ import {BrowserView, MobileView} from "react-device-detect";
 import {MovieType} from "@/types";
 
 
-const ListMoviesListItemDesktopLazy = React.lazy(() => import("./ListMoviesListItemDesktop.tsx"))
-const ListMoviesListItemMobileLazy = React.lazy(() => import("./ListMoviesListItemMobile.tsx"))
+const ListMoviesListItemDesktopLazy = React.lazy(() => import("./ListMoviesItemDesktop.tsx"))
+const ListMoviesListItemMobileLazy = React.lazy(() => import("./ListMoviesItemMobile.tsx"))
 
 
 
@@ -12,7 +12,7 @@ export interface ListMoviesListItemProps {
   movie: MovieType
 }
 
-function ListMoviesListItem(props: ListMoviesListItemProps) {
+function ListMoviesItem(props: ListMoviesListItemProps) {
   return (
     <>
       <BrowserView renderWithFragment>
@@ -26,4 +26,4 @@ function ListMoviesListItem(props: ListMoviesListItemProps) {
   );
 }
 
-export default ListMoviesListItem;
+export default ListMoviesItem;

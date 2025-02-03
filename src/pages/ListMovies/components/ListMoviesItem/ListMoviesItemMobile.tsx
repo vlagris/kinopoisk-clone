@@ -1,31 +1,27 @@
 import {Link} from "react-router-dom";
 import {clsx} from "clsx";
-import {ListMoviesListItemProps} from "./ListMoviesListItem.tsx";
+import {ListMoviesListItemProps} from "./ListMoviesItem.tsx";
 import {PATH_LINK} from "@/constants";
+import ListMoviesItemPoster from "./components/ListMoviesItemPoster/ListMoviesItemPoster.tsx";
 import classes from "./styles.module.scss";
-import PlaceholderImage from "@/assets/icons/placeholder.svg";
 
 
 
-function ListMoviesListItemMobile({movie}: ListMoviesListItemProps) {
+function ListMoviesItemMobile({movie}: ListMoviesListItemProps) {
+  const href = PATH_LINK.MOVIE(movie.id);
+
   return (
     <div className={clsx(classes.item, classes.itemSmall)}>
-      <Link to={PATH_LINK.MOVIE(movie.id)} className={classes.poster}>
-        <img
-          src={movie.poster?.previewUrl || PlaceholderImage}
-          alt=""
-          loading="lazy"
-          className={classes.image}
-        />
-        {!!movie.rating.kp &&
-          <div className={clsx(classes.posterRating, movie.rating.kp < 7 && classes.posterRating_gray)}>
-            {movie.rating.kp.toFixed(1)}
-          </div>
-        }
-      </Link>
+      <ListMoviesItemPoster
+        poster={movie.poster}
+        rating={movie.rating}
+        href={href}
+        alt={movie.name}
+      />
+
 
       <div className={classes.content}>
-        <Link to={PATH_LINK.MOVIE(movie.id)} className={classes.info}>
+        <Link to={href} className={classes.info}>
            <span className={classes.title}>
              {movie.name}
            </span>
@@ -54,4 +50,4 @@ function ListMoviesListItemMobile({movie}: ListMoviesListItemProps) {
   );
 }
 
-export default ListMoviesListItemMobile;
+export default ListMoviesItemMobile;

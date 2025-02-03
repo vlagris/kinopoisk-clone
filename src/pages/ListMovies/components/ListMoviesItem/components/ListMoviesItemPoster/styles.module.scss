@@ -1,0 +1,30 @@
+.poster {
+  position: relative;
+}
+
+
+.image {
+  width: 72px;
+  min-width: 72px;
+  height: 108px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .05);
+}
+
+
+.rating {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  min-width: 30px;
+  background: var(--green);
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 500;
+  text-align: center;
+  color: var(--white);
+}
+
+
+.ratingGray {
+  background: var(--gray-600);
+}

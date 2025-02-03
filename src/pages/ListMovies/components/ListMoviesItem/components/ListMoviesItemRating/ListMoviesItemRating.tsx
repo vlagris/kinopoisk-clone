@@ -11,7 +11,7 @@ interface ListMoviesListItemRatingProps {
 
 }
 
-function ListMoviesListItemRating({top250, rating, votes}: ListMoviesListItemRatingProps) {
+function ListMoviesItemRating({top250, rating, votes}: ListMoviesListItemRatingProps) {
   const valueClassName = clsx(
     classes.rate,
     rating.kp &&
@@ -60,4 +60,4 @@ function ListMoviesListItemRating({top250, rating, votes}: ListMoviesListItemRat
   );
 }
 
-export default ListMoviesListItemRating;
+export default ListMoviesItemRating;

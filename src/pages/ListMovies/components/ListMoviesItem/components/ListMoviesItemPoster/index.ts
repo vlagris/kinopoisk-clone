@@ -1,0 +1,1 @@
+export {default as ListMoviesItemPoster} from "./ListMoviesItemPoster.tsx";

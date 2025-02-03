@@ -4,7 +4,7 @@ import Skeleton from "@/components/Skeleton";
 import classes from "./styles.module.scss";
 
 
-function ListMoviesListItemSkeleton() {
+function ListMoviesItemSkeleton() {
   return (
     <div className={clsx(classes.item, isMobile && classes.itemSmall)}>
       <div className={classes.poster}>
@@ -34,4 +34,4 @@ function ListMoviesListItemSkeleton() {
   );
 }
 
-export default ListMoviesListItemSkeleton;
+export default ListMoviesItemSkeleton;

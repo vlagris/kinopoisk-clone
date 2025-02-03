@@ -1,33 +1,32 @@
 import {Link} from "react-router-dom";
 import {clsx} from "clsx";
-import {ListMoviesListItemProps} from "./ListMoviesListItem.tsx";
+import {ListMoviesListItemProps} from "./ListMoviesItem.tsx";
 import {PATH_LINK} from "@/constants";
-import {ListMoviesListItemRating} from "@/pages/ListMovies/components/ListMoviesList/components/ListMoviesListItem/components/ListMoviesListItemRating";
+import {ListMoviesItemRating} from "@/pages/ListMovies/components/ListMoviesItem/components/ListMoviesItemRating";
+import ListMoviesItemPoster from "./components/ListMoviesItemPoster/ListMoviesItemPoster.tsx";
 import {convertMinutesToHours} from "@/utils/convertMinutesToHours.ts";
 import classes from "./styles.module.scss";
-import PlaceholderImage from "@/assets/icons/placeholder.svg";
 
 
 
-function ListMoviesListItemDesktop({movie}: ListMoviesListItemProps) {
+function ListMoviesItemDesktop({movie}: ListMoviesListItemProps) {
   const duration = movie.movieLength && convertMinutesToHours(movie.movieLength);
   const name = movie.name || movie.alternativeName;
   const alternativeName = !!movie.name && movie.alternativeName || null;
+  const href = PATH_LINK.MOVIE(movie.id);
 
 
   return (
     <div className={classes.item}>
-      <Link to={PATH_LINK.MOVIE(movie.id)} className={classes.link}>
-        <img
-          src={movie.poster?.previewUrl || PlaceholderImage}
-          alt=""
-          loading="lazy"
-          className={classes.image}
-        />
-      </Link>
+      <ListMoviesItemPoster
+        poster={movie.poster}
+        rating={movie.rating}
+        href={href}
+        alt={movie.name}
+      />
 
       <div className={classes.content}>
-        <Link to={PATH_LINK.MOVIE(movie.id)} className={classes.info}>
+        <Link to={href} className={classes.info}>
            <span className={classes.title}>
              {name}
            </span>
@@ -53,7 +52,8 @@ function ListMoviesListItemDesktop({movie}: ListMoviesListItemProps) {
 
 
         <div className={classes.user}>
-          <ListMoviesListItemRating top250={movie.top250} rating={movie.rating} votes={movie.votes}/>
+          <ListMoviesItemRating
+            top250={movie.top250} rating={movie.rating} votes={movie.votes}/>
         </div>
 
       </div>
@@ -62,4 +62,4 @@ function ListMoviesListItemDesktop({movie}: ListMoviesListItemProps) {
   );
 }
 
-export default ListMoviesListItemDesktop;
+export default ListMoviesItemDesktop;
