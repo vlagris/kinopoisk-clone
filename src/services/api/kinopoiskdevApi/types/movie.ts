@@ -254,8 +254,8 @@ export type MovieSortField = "id" |
 
 
 export interface IGetMoviesByFilters {
-  page?: number,
-  limit?: number,
+  page?: number | string,
+  limit?: number | string,
   selectFields?: MovieSelectFields | MovieSelectFields[],
   notNullFields?: MovieNotNullFields | MovieNotNullFields[],
   sortField?: MovieSortField | MovieSortField[],
@@ -316,7 +316,7 @@ export interface IGetMoviesValuesByField {
 }
 
 export interface IGetMoviesBySearch {
-  page?: number,
-  limit?: number,
+  page?: number | string,
+  limit?: number | string,
   query: string
 }

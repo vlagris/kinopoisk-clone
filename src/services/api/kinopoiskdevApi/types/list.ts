@@ -12,8 +12,8 @@ export type ListsResponse = ListsType;
 
 
 export interface IGetLists {
-  page?: number,
-  limit?: number,
+  page?: number | string,
+  limit?: number | string,
   selectFields?: ListSelectFields | ListSelectFields[],
   notNullFields?: ListSelectFields | ListSelectFields[],
   sortField?: ListSortFields | ListSortFields[],
