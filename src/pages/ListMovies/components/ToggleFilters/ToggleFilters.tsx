@@ -1,13 +1,12 @@
-import React, {useMemo} from "react";
+import {useMemo} from "react";
 import {createSearchParams, useSearchParams} from "react-router-dom";
-import {BrowserView, MobileView} from "react-device-detect";
-import {ToggleFiltersItemProps} from "@/pages/ListMovies/components/ToggleFilters/components/ToggleFiltersItem.tsx";
+import {clsx} from "clsx";
+import {isDesktop} from "react-device-detect";
+import ToggleFiltersItem, {ToggleFiltersItemProps} from "@/pages/ListMovies/components/ToggleFilters/components/ToggleFiltersItem.tsx";
 import {ListCategory} from "@/types";
+import classes from "@/pages/ListMovies/components/ToggleFilters/styles.module.scss";
 
 
-
-const ToggleFiltersDesktopLazy = React.lazy(() => import("./ToggleFiltersDesktop.tsx"))
-const ToggleFiltersMobileLazy = React.lazy(() => import("./ToggleFiltersMobile.tsx"))
 
 type ToggleFiltersItemInitial = {
   value: string,
@@ -17,16 +16,12 @@ type ToggleFiltersItemInitial = {
 }
 
 const items: ToggleFiltersItemInitial[] = [
-  { value: "Фильмы", paramValue: "films", oppositeParam: "series", oppositeCategory: "Сериалы" },
-  { value: "Сериалы", paramValue: "series", oppositeParam: "films", oppositeCategory: "Фильмы" },
+  { value: "Фильмы", paramValue: "movie", oppositeParam: "tv-series", oppositeCategory: "Сериалы" },
+  { value: "Сериалы", paramValue: "tv-series", oppositeParam: "movie", oppositeCategory: "Фильмы" },
   { value: "Российские", paramValue: "russian", oppositeParam: "foreign" },
   { value: "Зарубежные", paramValue: "foreign", oppositeParam: "russian" },
 ]
 
-
-export interface ToggleFiltersViewProps {
-  items: ToggleFiltersItemProps[]
-}
 
 export interface ToggleFiltersProps {
   category?: ListCategory
@@ -62,15 +57,14 @@ function ToggleFilters({category}: ToggleFiltersProps) {
 
 
   return (
-    <React.Suspense>
-      <BrowserView renderWithFragment>
-        <ToggleFiltersDesktopLazy items={itemsProps}/>
-      </BrowserView>
-
-      <MobileView renderWithFragment>
-        <ToggleFiltersMobileLazy items={itemsProps}/>
-      </MobileView>
-    </React.Suspense>
+    <div className={clsx(classes.root, isDesktop && classes.rootDesktop)}>
+      {itemsProps.map((props) => (
+        <ToggleFiltersItem
+          key={props.to}
+          {...props}
+        />
+      ))}
+    </div>
   );
 }
 
