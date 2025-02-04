@@ -1,7 +1,7 @@
 import {clsx} from "clsx";
 import {isMobile} from "react-device-detect";
 import {Select, SelectButton, SelectItem, SelectMenu} from "@/components/UI/Select";
-import {useCustomSearchParams} from "@/hooks/useCustomSearchParams.ts";
+import {useUpdateSearchParams} from "@/hooks/useUpdateSearchParams.ts";
 import classes from "./styles.module.scss";
 
 
@@ -14,7 +14,7 @@ const items = [
 ]
 
 function Sorting() {
-  const {searchParams, updateSearchParam} = useCustomSearchParams();
+  const {searchParams, updateSearchParam} = useUpdateSearchParams();
   const sort = searchParams.get("sort");
 
 

@@ -24,11 +24,11 @@ function sortMoviesByTop(item1: MovieType, item2: MovieType) {
 }
 
 
-const getTypeFromToggleFilters = (values: string[]) => {
+const getTypeFromChipsFilters = (values: string[]) => {
   return (values as MovieTypeField[]).find(item => item === "movie" || item === "tv-series");
 }
 
-const getCountryFromToggleFilters  = (values: string[]) => {
+const getCountryFromChipsFilters  = (values: string[]) => {
   if (values.includes("russian")) {
     return "Россия";
   }
@@ -61,7 +61,7 @@ function ListMovies() {
   const country = searchParams.get('country');
   const genre = searchParams.get('genre');
   const sort = searchParams.get('sort') || "";
-  const toggleFilters = searchParams.getAll('b');
+  const chipsFilters = searchParams.getAll('b');
   const isTop = !!listSlug?.includes("top");
 
 
@@ -83,8 +83,8 @@ function ListMovies() {
   const genreName = genresSelect?.data?.find(({slug}) => slug === genre)?.name;
   const sortField: MovieSortField[] = [];
   const sortType: SortType[] = [];
-  const type = getTypeFromToggleFilters(toggleFilters);
-  const countries = [countryName, getCountryFromToggleFilters(toggleFilters)].filter(Boolean) as string[];
+  const type = getTypeFromChipsFilters(chipsFilters);
+  const countries = [countryName, getCountryFromChipsFilters(chipsFilters)].filter(Boolean) as string[];
 
 
   if (sort) {

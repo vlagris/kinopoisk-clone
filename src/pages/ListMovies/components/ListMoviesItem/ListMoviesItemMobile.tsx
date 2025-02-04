@@ -2,7 +2,7 @@ import {Link} from "react-router-dom";
 import {clsx} from "clsx";
 import {ListMoviesListItemProps} from "./ListMoviesItem.tsx";
 import {PATH_LINK} from "@/constants";
-import ListMoviesItemPoster from "./components/ListMoviesItemPoster/ListMoviesItemPoster.tsx";
+import {ListMoviesItemPoster} from "./components/ListMoviesItemPoster";
 import classes from "./styles.module.scss";
 
 

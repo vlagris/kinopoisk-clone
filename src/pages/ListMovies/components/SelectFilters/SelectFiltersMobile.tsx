@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {useCustomSearchParams} from "@/hooks/useCustomSearchParams.ts";
+import {useUpdateSearchParams} from "@/hooks/useUpdateSearchParams.ts";
 import {SelectFiltersProps} from "@/pages/ListMovies/components/SelectFilters/SelectFilters.tsx";
 import {Modal, ModalPanel, ModalHeader} from "@/components/UI/Modal";
 import {SelectModal,  SelectModalItem} from "@/pages/ListMovies/components/SelectFilters/components/SelectModal";
@@ -10,7 +10,7 @@ import FilterIcon from "@/assets/icons/filter.svg?react";
 
 function SelectFiltersMobile({countries, genres}: SelectFiltersProps) {
   const [show, setShow] = useState(false);
-  const {searchParams, updateSearchParam} = useCustomSearchParams();
+  const {searchParams, updateSearchParam} = useUpdateSearchParams();
   const country = searchParams.get("country");
   const genre = searchParams.get("genre");
 

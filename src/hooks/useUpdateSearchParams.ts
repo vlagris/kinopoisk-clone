@@ -3,7 +3,7 @@ import {SearchParamsNames} from "@/types";
 
 
 
-export function useCustomSearchParams() {
+export function useUpdateSearchParams() {
   const [searchParams, setSearchParams] = useSearchParams();
 
 

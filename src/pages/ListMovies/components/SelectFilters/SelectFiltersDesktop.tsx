@@ -1,4 +1,4 @@
-import {useCustomSearchParams} from "@/hooks/useCustomSearchParams.ts";
+import {useUpdateSearchParams} from "@/hooks/useUpdateSearchParams.ts";
 import {Select, SelectButton, SelectItem, SelectMenu} from "@/components/UI/Select";
 import {Collapse} from "@/components/UI/Collapse";
 import {SelectFiltersProps} from "@/pages/ListMovies/components/SelectFilters/SelectFilters.tsx";
@@ -7,7 +7,7 @@ import classes from "./styles.desktop.module.scss";
 
 
 function SelectFiltersDesktop({countries, genres}: SelectFiltersProps) {
-  const {searchParams, updateSearchParam} = useCustomSearchParams();
+  const {searchParams, updateSearchParam} = useUpdateSearchParams();
   const country = searchParams.get("country");
   const genre = searchParams.get("genre");
 

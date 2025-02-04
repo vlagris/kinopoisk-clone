@@ -3,7 +3,7 @@ import {clsx} from "clsx";
 import {ListMoviesListItemProps} from "./ListMoviesItem.tsx";
 import {PATH_LINK} from "@/constants";
 import {ListMoviesItemRating} from "@/pages/ListMovies/components/ListMoviesItem/components/ListMoviesItemRating";
-import ListMoviesItemPoster from "./components/ListMoviesItemPoster/ListMoviesItemPoster.tsx";
+import {ListMoviesItemPoster} from "./components/ListMoviesItemPoster";
 import {convertMinutesToHours} from "@/utils/convertMinutesToHours.ts";
 import classes from "./styles.module.scss";
 
