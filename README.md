@@ -1,67 +1,26 @@
-## Kinopoisk
-
-<p>
-    <img alt="NPM Badge" src="https://img.shields.io/badge/v10.2.3-green?label=npm&color=blue">
-</p>
+## Kinopoisk clone
 
 Копия веб сайта [kinopoisk.ru](https://www.kinopoisk.ru/) сделанная с помощью api сервиса [kinopoisk.dev](https://kinopoisk.dev/). 
 Функционал сайта ограничен возможностями api сервиса.
 На сайте доступны списки фильмов, возможность поиска и карточки фильмов.
 
 
-
 ## Содержание
-
-1. [Технологии](#технологии)
-2. [Быстрый старт](#быстрый-старт)
-3. [Ссылки](#ссылки)
+1. [Демонстрация](#демонстрация)
+2. [Технологии](#технологии)
+3. [Быстрый старт](#быстрый-старт)
 4. [Скриншоты](#скриншоты)
 
-
+## Демонстрация
+ Демострация проекта здесь: [Kinopoisk-clone demo](https://vlagris.github.io/kinopoisk-app/)
 
 ## Технологии
-Frontend:
 - TypeScript
 - React
 - React-router
 - React-query
 - Sass
 - Vite
-
-
-
-## Быстрый старт
-
-На вашем компьютере должно быть установлено следующее:
-- [Git](https://git-scm.com/)
-- [Node.js](https://nodejs.org/en)
-- [npm](https://www.npmjs.com/)
-
-#### Клонирование репозитория
-```
-git clone https://github.com/vlagris/kinopoisk-app.git
-cd kinopoisk-app
-```
-
-#### Установка
-Установите зависимости проекта с помощью npm:
-```
-npm install
-```
-
-#### Запуск проекта
-```
-npm run dev
-```
-Откройте http://localhost:5173 в вашем браузере, чтобы просмотреть проект.
-
-
-
-## Ссылки:
-
-Проект запущен на [github pages](https://vlagris.github.io/kinopoisk-app/)
-
-
 
 ## Скриншоты:
 <div align="center"> 
@@ -77,5 +36,21 @@ npm run dev
   <p><i>Поиск фильмов</i></p>
 </div>
 
+## Быстрый старт
+#### Клонирование репозитория
+```
+git clone https://github.com/vlagris/kinopoisk-clone.git
+cd kinopoisk-clone
+```
 
+#### Установка
+Установите зависимости проекта с помощью npm:
+```
+npm install
+```
 
+#### Запуск проекта
+```
+npm run dev
+```
+Откройте http://localhost:5173 в вашем браузере, чтобы просмотреть проект.
