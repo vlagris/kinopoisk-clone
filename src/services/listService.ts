@@ -8,7 +8,6 @@ export async function getLists(requestParams: IGetLists) {
       "/v1.4/list",
       {
         params: { ...defaultParams, ...requestParams },
-        paramsSerializer: { indexes: null }
       }
     )
     return response.data;

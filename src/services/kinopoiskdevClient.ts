@@ -2,6 +2,7 @@ import axios from "axios";
 
 export const kinopoiskdevClient = axios.create({
   baseURL: import.meta.env.VITE_KINOPOISKDEV_API_URL,
+  paramsSerializer: { indexes: null }
 });
 
 kinopoiskdevClient.interceptors.request.use((config) => {

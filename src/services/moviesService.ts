@@ -24,7 +24,6 @@ export async function getMoviesByFilters(requestParams: IGetMoviesByFilters) {
       "/v1.4/movie",
       {
         params: { ...defaultParams, ...requestParams },
-        paramsSerializer: { indexes: null }
       }
     )
     return response.data;
@@ -39,7 +38,6 @@ export async function getMoviesValuesByField(requestParams: IGetMoviesValuesByFi
       "/v1/movie/possible-values-by-field",
       {
         params: requestParams,
-        paramsSerializer: { indexes: null }
       }
     )
     return response.data;
