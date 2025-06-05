@@ -1,4 +1,4 @@
-import { createHashRouter } from "react-router-dom";
+import {createHashRouter, createBrowserRouter, RouteObject} from "react-router-dom";
 import {PATH_ROUTE} from "@/constants";
 import {Layout} from "@/components/Layout";
 import {Home} from "@/pages/Home";
@@ -7,9 +7,7 @@ import ErrorPage from "@/pages/ErrorPage";
 import {ListMovies} from "@/pages/ListMovies";
 import {Movie} from "@/pages/Movie";
 
-
-
-export const router = createHashRouter([
+export const routes: RouteObject[] = [
   {
     path: PATH_ROUTE.HOME,
     element: <Layout/>,
@@ -35,4 +33,6 @@ export const router = createHashRouter([
       },
     ]
   },
-]);
+]
+
+export const router = import.meta.env.DEV ? createBrowserRouter(routes) : createHashRouter(routes);

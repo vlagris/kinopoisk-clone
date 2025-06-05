@@ -1,10 +1,10 @@
 import {useQuery} from "@tanstack/react-query";
-import {kinopoiskdevApi} from "@/services/api/kinopoiskdevApi";
+import {clsx} from "clsx";
+import {getMoviesByFilters} from "@/services/moviesService.ts";
 import {Carousel, CarouselItem} from "@/components/Carousel";
 import {MovieSectionTitle, MovieSectionTitleSkeleton} from "@/components/MovieSectionTitle";
 import {Card, CardSkeleton} from "@/components/Card";
 import classes from "./styles.module.scss";
-import {clsx} from "clsx";
 
 
 interface MovieTicketsSectionProps {
@@ -14,7 +14,7 @@ interface MovieTicketsSectionProps {
 function MovieTicketsSection({className}: MovieTicketsSectionProps) {
   const {data: movies, isSuccess} = useQuery({
     queryKey: ["moviesTickets"],
-    queryFn: () => kinopoiskdevApi.getMoviesByFilters({
+    queryFn: () => getMoviesByFilters({
       limit: 20,
       notNullFields: ["premiere.russia"],
       sortField: ["premiere.russia"],
@@ -22,7 +22,6 @@ function MovieTicketsSection({className}: MovieTicketsSectionProps) {
       ticketsOnSale: ["true"],
     })
   });
-
 
   if (!isSuccess) {
     return (
@@ -39,11 +38,9 @@ function MovieTicketsSection({className}: MovieTicketsSectionProps) {
     );
   }
 
-
   if (!movies) {
     return (<></>);
   }
-
 
   return (
     <section className={clsx(className)}>

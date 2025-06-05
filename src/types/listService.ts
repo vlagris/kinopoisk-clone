@@ -1,15 +1,12 @@
 import {ListCategory, ListsType, ListType} from "@/types";
-import {SortType} from "@/services/api/kinopoiskdevApi/types/common.ts";
+import {SortType} from "./kinopoiskdev.ts";
 
 type ListSelectFields = "name" | "category" | "slug" | "moviesCount" | "cover" | "updatedAt" | "createdAt";
 type ListSortFields = "name" | "category" | "slug" | "moviesCount" | "cover.url" | "cover.previewUrl" | "updatedAt" | "createdAt";
 
-
 export type ListResponse = ListType;
 
 export type ListsResponse = ListsType;
-
-
 
 export interface IGetLists {
   page?: number | string,

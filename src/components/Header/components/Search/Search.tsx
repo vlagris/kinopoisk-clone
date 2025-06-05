@@ -1,7 +1,7 @@
 import React, {useState, Dispatch, SetStateAction} from "react";
 import {BrowserView, MobileView} from "react-device-detect";
 import {useQuery, UseQueryResult} from "@tanstack/react-query";
-import {kinopoiskdevApi} from "@/services/api/kinopoiskdevApi";
+import {getMoviesBySearch} from "@/services/moviesService.ts";
 import {Movies} from "@/types";
 
 const SearchDesktopLazy = React.lazy(() => import("./SearchDesktop.tsx"))
@@ -18,7 +18,7 @@ function Search() {
   const [searchQuery, setSearchQuery] = useState("");
   const movies = useQuery({
     queryKey: ["movieSearch", searchQuery],
-    queryFn: () => kinopoiskdevApi.getMoviesBySearch({query: searchQuery}),
+    queryFn: () => getMoviesBySearch({query: searchQuery}),
     enabled: !!searchQuery,
   });
   const viewProps: SearchViewProps = {

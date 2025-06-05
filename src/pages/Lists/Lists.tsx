@@ -1,38 +1,29 @@
 import {useParams} from "react-router-dom";
+import {useQuery} from "@tanstack/react-query";
+import {LIST_CATEGORY_MAP} from "@/constants";
 import {PageTitle} from "@/components/PageTitle";
-import {ListCategory} from "@/types";
-import {kinopoiskdevApi} from "@/services/api/kinopoiskdevApi";
 import {ListsCategories} from "@/pages/Lists/components/ListsCategories";
 import {ListsContent} from "@/pages/Lists/components/ListsContent";
-import {useQuery} from "@tanstack/react-query";
+import {getLists} from "@/services/listService.ts";
 import classes from "@/pages/Lists/styles.module.scss";
 
 
-
-const categoryMap: { [p: string]: ListCategory } = {
-  "1": "Фильмы",
-  "2": "Онлайн-кинотеатр",
-  "3": "Сериалы",
-  "4": "Сборы",
-  "5": "Премии"
-}
 
 function ListsPage() {
   const { categoryIndex } = useParams();
   if (!categoryIndex) {
     throw new Error("category index is missing");
   }
-  const category = categoryMap[categoryIndex];
+  const category = LIST_CATEGORY_MAP[categoryIndex];
   const lists = useQuery({
     queryKey: ["lists", category],
-    queryFn: () => kinopoiskdevApi.getLists({
+    queryFn: () => getLists({
       limit: 250,
       category: category,
       sortField: "moviesCount",
       sortType: "-1"
     })
   });
-
 
   return (
     <div className={classes.categories}>

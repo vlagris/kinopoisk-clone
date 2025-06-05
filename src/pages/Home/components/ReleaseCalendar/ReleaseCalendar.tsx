@@ -1,7 +1,7 @@
 import {clsx} from "clsx";
 import {isMobile} from "react-device-detect";
 import {useQuery} from "@tanstack/react-query";
-import {kinopoiskdevApi} from "@/services/api/kinopoiskdevApi";
+import {getMoviesByFilters} from "@/services/moviesService.ts";
 import {MovieSectionTitle} from "@/components/MovieSectionTitle";
 import {ReleaseCalendarItem} from "@/pages/Home/components/ReleaseCalendar/components/ReleaseCalendarItem";
 import {ReleaseCalendarSkeleton} from "./components/ReleaseCalendarSkeleton";
@@ -13,7 +13,7 @@ function ReleaseCalendar() {
   const endDate = new Date(new Date().setDate(new Date().getDate() + 30)).toLocaleDateString("ru");
   const { data: movies, isSuccess } = useQuery({
     queryKey: ["moviesRelease"],
-    queryFn: () => kinopoiskdevApi.getMoviesByFilters({
+    queryFn: () => getMoviesByFilters({
       limit: 10,
       notNullFields: ["premiere.russia"],
       selectFields: ["id", "name", "alternativeName", "poster", "premiere"],
@@ -24,8 +24,6 @@ function ReleaseCalendar() {
       type: ["movie"]
     })
   });
-
-
 
   if (isSuccess && !movies.docs?.length) {
     return (<></>)

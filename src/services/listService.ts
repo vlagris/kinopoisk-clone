@@ -1,6 +1,5 @@
-import {IGetLists, ListResponse, ListsResponse} from "@/services/api/kinopoiskdevApi/types";
-import {kinopoiskdevClient} from "@/services/api/kinopoiskdevApi/kinopoiskdevClient.ts";
-
+import {IGetLists, ListResponse, ListsResponse} from "@/types";
+import {kinopoiskdevClient} from "@/services/kinopoiskdevClient.ts";
 
 export async function getLists(requestParams: IGetLists) {
   try {
@@ -18,7 +17,6 @@ export async function getLists(requestParams: IGetLists) {
   }
 }
 
-
 export async function getListBySlug(slug: string) {
   try {
     const response = await kinopoiskdevClient.get<ListResponse>(`/v1.4/list/${slug}`)
@@ -27,5 +25,3 @@ export async function getListBySlug(slug: string) {
     throw error;
   }
 }
-
-

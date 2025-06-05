@@ -1,13 +1,12 @@
-import {kinopoiskdevClient} from "@/services/api/kinopoiskdevApi/kinopoiskdevClient.ts";
+import {kinopoiskdevClient} from "@/services/kinopoiskdevClient.ts";
 import {
   IGetMoviesByFilters,
   IGetMoviesBySearch,
   IGetMoviesValuesByField,
   MovieResponse,
-  MoviesResponse
-} from "@/services/api/kinopoiskdevApi/types";
-import {PossibleValueByField} from "@/types";
-
+  MoviesResponse,
+  PossibleValueByField
+} from "@/types";
 
 export async function getMovieById(id: number | string) {
   try {
@@ -17,7 +16,6 @@ export async function getMovieById(id: number | string) {
     throw error;
   }
 }
-
 
 export async function getMoviesByFilters(requestParams: IGetMoviesByFilters) {
   try {
@@ -35,7 +33,6 @@ export async function getMoviesByFilters(requestParams: IGetMoviesByFilters) {
   }
 }
 
-
 export async function getMoviesValuesByField(requestParams: IGetMoviesValuesByField) {
   try {
     const response = await kinopoiskdevClient.get<PossibleValueByField[]>(
@@ -50,7 +47,6 @@ export async function getMoviesValuesByField(requestParams: IGetMoviesValuesByFi
     throw error;
   }
 }
-
 
 export async function getMoviesBySearch(requestParams: IGetMoviesBySearch) {
   try {

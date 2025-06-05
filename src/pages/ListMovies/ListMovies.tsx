@@ -3,8 +3,9 @@ import {BrowserView, MobileView} from "react-device-detect";
 import {useParams, useSearchParams} from "react-router-dom";
 import {useQuery, useMutation, UseQueryResult, UseMutationResult} from '@tanstack/react-query'
 import {ListType, Movies, MovieType, PossibleValueByField} from "@/types";
-import {MovieSortField, MovieTypeField, SortType} from "@/services/api/kinopoiskdevApi/types";
-import {kinopoiskdevApi} from "@/services/api/kinopoiskdevApi";
+import {MovieSortField, MovieTypeField, SortType} from "@/types";
+import {getListBySlug} from "@/services/listService.ts";
+import {getMoviesByFilters, getMoviesValuesByField} from "@/services/moviesService.ts";
 
 const ListMoviesDesktopLazy = React.lazy(() => import("./ListMoviesDesktop.tsx"))
 const ListMoviesMobileLazy = React.lazy(() => import("./ListMoviesMobile.tsx"))
@@ -67,15 +68,15 @@ function ListMovies() {
 
   const listInfo = useMutation({
     mutationKey: ["listInfo", listSlug],
-    mutationFn: kinopoiskdevApi.getListBySlug,
+    mutationFn: getListBySlug,
   });
   const countriesSelect = useQuery({
     queryKey: ["countriesField"],
-    queryFn: () => kinopoiskdevApi.getMoviesValuesByField({field: "countries.name"}),
+    queryFn: () => getMoviesValuesByField({field: "countries.name"}),
 });
   const genresSelect = useQuery({
     queryKey: ["genresField"],
-    queryFn: () => kinopoiskdevApi.getMoviesValuesByField({field: "genres.name"}),
+    queryFn: () => getMoviesValuesByField({field: "genres.name"}),
   });
 
 
@@ -99,7 +100,7 @@ function ListMovies() {
 
   const movies = useQuery({
     queryKey: ["movies", page, listSlug, sortField, sortType, genreName, countries, type],
-    queryFn: () => kinopoiskdevApi.getMoviesByFilters({
+    queryFn: () => getMoviesByFilters({
       limit: 50,
       page: page,
       lists: listSlug,

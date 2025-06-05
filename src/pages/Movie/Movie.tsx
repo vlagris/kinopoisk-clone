@@ -3,7 +3,7 @@ import {useParams} from "react-router-dom";
 import {useQuery} from "@tanstack/react-query";
 import {BrowserView, MobileView} from "react-device-detect";
 import {MovieType} from "@/types";
-import {kinopoiskdevApi} from "@/services/api/kinopoiskdevApi";
+import {getMovieById} from "@/services/moviesService.ts";
 import {PageTitle} from "@/components/PageTitle";
 
 const MovieDesktopLazy = React.lazy(() => import("./MovieDesktop.tsx"))
@@ -19,7 +19,7 @@ function Movie() {
   const {filmSlug} = useParams();
   const film = useQuery({
     queryKey: ["film", filmSlug],
-    queryFn: () => kinopoiskdevApi.getMovieById(filmSlug as string),
+    queryFn: () => getMovieById(filmSlug as string),
     enabled: !!filmSlug
   })
 

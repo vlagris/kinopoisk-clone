@@ -1,6 +1,5 @@
 export type ListCategory = "Фильмы" | "Сериалы" | "Сборы" | "Премии" | "Онлайн-кинотеатр";
 
-
 export type ListType = {
   category: ListCategory,
   slug: string,

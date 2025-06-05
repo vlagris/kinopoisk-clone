@@ -3,8 +3,6 @@ import {PATH_LINK} from "@/constants";
 import classes from "@/pages/ErrorPage/styles.module.scss";
 import LogoImage from "@/assets/icons/logo.svg";
 
-
-
 function ErrorPage() {
   return (
     <div className={classes.errorPage}>

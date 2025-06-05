@@ -1,13 +1,10 @@
 import {MovieType, Movies, MovieStatus} from "@/types";
-import {SortType} from "@/services/api/kinopoiskdevApi/types/common.ts";
-
+import {SortType} from "./kinopoiskdev.ts";
 
 export type MovieTypeField = "movie" | "tv-series" | "cartoon" | "animated-series" | "anime";
 
-
 export type MovieResponse = MovieType;
 export type MoviesResponse = Movies;
-
 
 type MovieSelectFields = "id" |
   "externalId" |
@@ -250,8 +247,6 @@ export type MovieSortField = "id" |
   "top250" |
   "updatedAt" |
   "createdAt";
-
-
 
 export interface IGetMoviesByFilters {
   page?: number | string,
